@@ -1,0 +1,19 @@
+{
+  "name": "CAS-FEE_Project1",
+  "version": "0.0.1",
+  "description": "CAS Front End Engineering - Project 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtinner/CAS-FEE_Project1.git"
+  },
+  "author": "Tobias Buechel; Marcel Tinner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtinner/CAS-FEE_Project1/issues"
+  },
+  "homepage": "https://github.com/mtinner/CAS-FEE_Project1#readme"
+}
