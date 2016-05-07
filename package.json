@@ -19,9 +19,11 @@
   "devDependencies": {
     "bower": "1.7.9",
     "browserify": "13.0.0",
+    "express": "4.13.4",
     "grunt": "1.0.1",
     "grunt-cli": "1.2.0",
     "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "1.0.1",
     "main-bower-files": "2.13.0"
   }
 }

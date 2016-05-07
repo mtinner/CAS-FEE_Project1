@@ -13,6 +13,15 @@ module.exports = function(grunt) {
                     paths  :'.'
                 }
             }
+        },
+        concat: {
+            options: {
+                separator: ';\n'
+            },
+            dist: {
+                src: ['tmp/vendor/angular/angular.js','tmp/vendor/angular-route/angular-route.js'],
+                dest: 'resources/scripts/vendor.js'
+            }
         }
     });
 
@@ -20,7 +29,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('default', ['clean','bower']);
+    grunt.registerTask('default', ['clean','bower','concat']);
 
 };
