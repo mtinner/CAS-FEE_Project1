@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 
+    require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         clean: {
             clean: ["tmp"]
@@ -21,6 +22,17 @@ module.exports = function(grunt) {
             dist: {
                 src: ['tmp/vendor/angular/angular.js','tmp/vendor/angular-route/angular-route.js'],
                 dest: 'resources/scripts/vendor.js'
+            }
+        },
+        sass: {
+
+            dist: {
+                options: {
+                    includePaths: [ '/app/styles/layout' ]
+                },
+                files: {
+                  'app/resources/styles/main.css':'app/styles/all.scss'
+                }
             }
         },
         express: {
@@ -48,6 +60,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['clean','bower','concat','express','watch']);
+    grunt.registerTask('default', [
+        'clean',
+        'bower',
+        'concat',
+        'sass',
+        'express',
+        'watch'
+    ]);
 
 };
