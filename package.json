@@ -24,6 +24,8 @@
     "grunt-cli": "1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.3",
     "main-bower-files": "2.13.0"
   }
 }

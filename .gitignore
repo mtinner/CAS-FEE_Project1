@@ -36,4 +36,4 @@ node_modules
 node_modules
 bower_components
 tmp
-resources
+*vendor.js

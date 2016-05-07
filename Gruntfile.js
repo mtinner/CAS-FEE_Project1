@@ -22,6 +22,21 @@ module.exports = function(grunt) {
                 src: ['tmp/vendor/angular/angular.js','tmp/vendor/angular-route/angular-route.js'],
                 dest: 'resources/scripts/vendor.js'
             }
+        },
+        express: {
+            dev: {
+                options: {
+                    script: './server.js'
+                }
+            }
+        },
+        watch: {
+            scripts: {
+                files: ['**/*.js'],
+                options: {
+                    livereload: true
+                }
+            }
         }
     });
 
@@ -30,7 +45,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['clean','bower','concat']);
+    grunt.registerTask('default', ['clean','bower','concat','express','watch']);
 
 };
