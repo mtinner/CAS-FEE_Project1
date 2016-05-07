@@ -2,7 +2,7 @@
   "name": "CAS-FEE_Project1",
   "version": "0.0.1",
   "description": "CAS Front End Engineering - Project 1",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/mtinner/CAS-FEE_Project1/issues"
   },
-  "homepage": "https://github.com/mtinner/CAS-FEE_Project1#readme"
+  "homepage": "https://github.com/mtinner/CAS-FEE_Project1#readme",
+  "devDependencies": {
+    "bower": "1.7.9",
+    "browserify": "13.0.0",
+    "grunt": "1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "main-bower-files": "2.13.0"
+  }
 }

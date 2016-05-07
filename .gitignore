@@ -28,10 +28,11 @@ node_modules
 
 # Optional npm cache directory
 .npm
-
 # Optional REPL history
 .node_repl_history
 
 *.iml
 .idea
-.node_modules
+node_modules
+bower_components
+tmp
