@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 dest: 'tmp/vendor',
                 options: {
                     checkExistence: true,
-                    paths  :'.'
+                    paths: '.'
                 }
             }
         },
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 separator: ';\n'
             },
             dist: {
-                src: ['tmp/vendor/angular/angular.js','tmp/vendor/angular-route/angular-route.js'],
+                src: ['tmp/vendor/angular/angular.js', 'tmp/vendor/angular-route/angular-route.js'],
                 dest: 'resources/scripts/vendor.js'
             }
         },
@@ -28,10 +28,10 @@ module.exports = function(grunt) {
 
             dist: {
                 options: {
-                    includePaths: [ '/app/styles/layout' ]
+                    includePaths: ['/app/styles/layout']
                 },
                 files: {
-                  'app/resources/styles/main.css':'app/styles/all.scss'
+                    'app/resources/styles/main.css': 'app/styles/all.scss'
                 }
             }
         },
@@ -43,8 +43,12 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            css: {
+                files: '**/*.scss',
+                tasks: ['sass']
+            },
             scripts: {
-                files: ['**/*.js'],
+                files: ['**/*.js', '**/*.css'],
                 options: {
                     livereload: true
                 }
