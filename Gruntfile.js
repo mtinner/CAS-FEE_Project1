@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         clean: {
-            clean: ["tmp"]
+            clean: ['tmp', 'app/bundle.js*']
         },
         bower: {
             dev: {
@@ -25,7 +25,6 @@ module.exports = function (grunt) {
             }
         },
         sass: {
-
             dist: {
                 options: {
                     includePaths: ['/app/styles/layout']
@@ -47,22 +46,18 @@ module.exports = function (grunt) {
                 files: '**/*.scss',
                 tasks: ['sass']
             },
-            scripts: {
-                files: ['**/*.js', '**/*.css'],
-                options: {
-                    livereload: true
-                }
+            browserify: {
+                files: ['app/src/**/*.js'],
+                tasks: ['browserify']
             }
         },
-        babel: {
-            options: {
-                sourceMap: true,
-                presets: ['es2015']
-            },
+        browserify: {
             dist: {
-                files: {
-                    'app/bundle.js': 'app/app.js'
-                }
+                options: {
+                    transform: [['babelify', { presets: ['es2015'] }]]
+                },
+                src: ['app/src/main.js'],
+                dest: 'app/bundle.js',
             }
         }
     });
@@ -72,13 +67,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-browserify');
 
     grunt.registerTask('default', [
         'clean',
         'bower',
         'concat',
         'sass',
-        'babel',
+        'browserify',
         'express',
         'watch'
     ]);
