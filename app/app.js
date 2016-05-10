@@ -7,6 +7,9 @@ var project1 = angular.module('project1', [
 ]);
 
 project1.config(['$routeProvider',
-    function($routeProvider) {
-
+    function ($routeProvider) {
+        const getText = () => {
+            return 'This is ES6 code! ';
+        };
+        alert(getText());
     }]);

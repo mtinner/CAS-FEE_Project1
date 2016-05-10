@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
-
     require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         clean: {
             clean: ["tmp"]
@@ -53,10 +53,19 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             }
+        },
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['es2015']
+            },
+            dist: {
+                files: {
+                    'app/bundle.js': 'app/app.js'
+                }
+            }
         }
     });
-
-
 
     grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -69,8 +78,8 @@ module.exports = function (grunt) {
         'bower',
         'concat',
         'sass',
+        'babel',
         'express',
         'watch'
     ]);
-
 };
