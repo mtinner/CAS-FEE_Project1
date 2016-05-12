@@ -38,3 +38,4 @@ bower_components
 tmp
 *vendor.js
 main.css
+app/bundle.js
