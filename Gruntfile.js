@@ -59,6 +59,9 @@ module.exports = function (grunt) {
                 src: ['app/src/main.js'],
                 dest: 'app/bundle.js',
             }
+        },
+        eslint: {
+            target: ['app/src/**/*.js']
         }
     });
 
@@ -68,6 +71,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browserify');
+    require('load-grunt-tasks')(grunt);
 
     grunt.registerTask('default', [
         'clean',
@@ -76,6 +80,7 @@ module.exports = function (grunt) {
         'sass',
         'browserify',
         'express',
-        'watch'
+        'watch',
+        'eslint'
     ]);
 };
