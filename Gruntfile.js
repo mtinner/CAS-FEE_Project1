@@ -49,7 +49,7 @@ module.exports = function (grunt) {
                 files: '**/*.scss',
                 tasks: ['sass']
             },
-            browserify: {
+            scripts: {
                 files: ['app/src/**/*.js'],
                 tasks: ['eslint', 'browserify']
             }
