@@ -22,8 +22,15 @@ module.exports = function (grunt) {
             main: {
                 expand: true,
                 cwd: './app',
-                src: './index.html',
+                src: './*.html',
                 dest: './dist/app',
+                filter: 'isFile'
+            },
+            views: {
+                expand: true,
+                cwd: './app/src/views',
+                src: './*.html',
+                dest: './dist/app/views',
                 filter: 'isFile'
             }
         },
@@ -63,6 +70,7 @@ module.exports = function (grunt) {
                     'clean',
                     'copy:tmp',
                     'copy:main',
+                    'copy:views',
                     'concat',
                     'sass',
                     'browserify',
@@ -75,7 +83,7 @@ module.exports = function (grunt) {
                 options: {
                     transform: [['babelify', {presets: ['es2015']}]]
                 },
-                src: ['app/src/main.js'],
+                src: ['app/src/scripts/**/*.js'],
                 dest: 'dist/app/main.bundle.js'
             }
         },
@@ -95,6 +103,7 @@ module.exports = function (grunt) {
         'clean',
         'copy:tmp',
         'copy:main',
+        'copy:views',
         'concat',
         'sass',
         'browserify',
