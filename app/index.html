@@ -9,16 +9,12 @@
     <link href="/dist/app/main.css" type="text/css" rel="stylesheet"/>
     <script src="/dist/app/vendor.concat.js"></script>
     <script src="/dist/app/main.bundle.js"></script>
-    <link rel="import" id="home-file" href="home.html">
 </head>
 <body>
 <div>
+    <div id="home-container"></div>
+    <div id="create-note-container"></div>
     <p class="padding-left--200">Nothing here {{'yet' + '!'}}</p>
-    <script>
-        var getImport = document.querySelector('#home-file');
-        var getContent = getImport.import.querySelector('#home');
-        document.body.appendChild(document.importNode(getContent, true));
-    </script>
 </div>
 </body>
 </html>
