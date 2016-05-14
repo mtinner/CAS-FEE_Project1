@@ -35,7 +35,7 @@ node_modules
 .idea
 node_modules
 bower_components
-tmp
+dist
 *vendor.js
 main.css
 app/bundle.js

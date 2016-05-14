@@ -3,15 +3,37 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         clean: {
-            clean: ['tmp', 'app/bundle.js*']
+            clean: [
+                'dist'
+            ]
+        },
+        copy: {
+            tmp: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: './node_modules/jquery/dist',
+                        src: './jquery.js',
+                        dest: './dist/tmp/vendor',
+                        filter: 'isFile'
+                    }
+                ]
+            },
+            main: {
+                expand: true,
+                cwd: './app',
+                src: './index.html',
+                dest: './dist/app',
+                filter: 'isFile'
+            }
         },
         concat: {
             options: {
                 separator: ';\n'
             },
             dist: {
-                src: ['tmp/vendor/angular/angular.js', 'tmp/vendor/angular-route/angular-route.js'],
-                dest: 'resources/scripts/vendor.js'
+                src: ['./dist/tmp/vendor/jquery.js'],
+                dest: './dist/app/vendor.concat.js'
             }
         },
         sass: {
@@ -20,7 +42,7 @@ module.exports = function (grunt) {
                     includePaths: ['/app/styles/layout']
                 },
                 files: {
-                    'app/resources/styles/main.css': 'app/styles/all.scss'
+                    'dist/app/main.css': 'app/styles/all.scss'
                 }
             }
         },
@@ -35,13 +57,17 @@ module.exports = function (grunt) {
             options: {
                 livereload: true
             },
-            css: {
-                files: '**/*.scss',
-                tasks: ['sass']
-            },
-            scripts: {
-                files: ['app/src/**/*.js'],
-                tasks: ['eslint', 'browserify']
+            all: {
+                files: ['app/**'],
+                tasks: [
+                    'clean',
+                    'copy:tmp',
+                    'copy:main',
+                    'concat',
+                    'sass',
+                    'browserify',
+                    'eslint'
+                ]
             }
         },
         browserify: {
@@ -50,7 +76,7 @@ module.exports = function (grunt) {
                     transform: [['babelify', {presets: ['es2015']}]]
                 },
                 src: ['app/src/main.js'],
-                dest: 'app/bundle.js'
+                dest: 'dist/app/main.bundle.js'
             }
         },
         eslint: {
@@ -59,6 +85,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -66,11 +93,13 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'clean',
+        'copy:tmp',
+        'copy:main',
         'concat',
         'sass',
         'browserify',
         'express',
         'eslint',
-        'watch'
+        'watch:all'
     ]);
 };
