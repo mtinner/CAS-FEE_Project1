@@ -3,7 +3,6 @@
 ## Installation
 1. install grunt 'npm install -g grunt-cli'
 2. npm install
-3. bower install
 
 ## Server
 node server.js

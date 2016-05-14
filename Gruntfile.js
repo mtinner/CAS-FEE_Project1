@@ -5,16 +5,6 @@ module.exports = function (grunt) {
         clean: {
             clean: ['tmp', 'app/bundle.js*']
         },
-        bower: {
-            dev: {
-                base: 'bower_components', /* the path to the bower_components directory */
-                dest: 'tmp/vendor',
-                options: {
-                    checkExistence: true,
-                    paths: '.'
-                }
-            }
-        },
         concat: {
             options: {
                 separator: ';\n'
@@ -57,7 +47,7 @@ module.exports = function (grunt) {
         browserify: {
             dist: {
                 options: {
-                    transform: [['babelify', { presets: ['es2015'] }]]
+                    transform: [['babelify', {presets: ['es2015']}]]
                 },
                 src: ['app/src/main.js'],
                 dest: 'app/bundle.js'
@@ -68,7 +58,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-express-server');
@@ -77,7 +66,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'clean',
-        'bower',
         'concat',
         'sass',
         'browserify',
