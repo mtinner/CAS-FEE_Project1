@@ -22,7 +22,7 @@ module.exports = function (grunt) {
             main: {
                 expand: true,
                 cwd: './app',
-                src: './index.html',
+                src: './*.html',
                 dest: './dist/app',
                 filter: 'isFile'
             }
