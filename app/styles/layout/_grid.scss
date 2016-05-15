@@ -1,0 +1,42 @@
+.row {
+  width: 100%;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.col {
+  &-1 {
+    width: 16.66%;
+  }
+
+  &-2 {
+    width: 33.33%;
+  }
+
+  &-3 {
+    width: 50%;
+  }
+
+  &-4 {
+    width: 66.66%;
+  }
+
+  &-5 {
+    width: 83.33%;
+  }
+
+  &-6 {
+    width: 100%;
+  }
+}
+
+[class*='col-'] {
+  float: left;
+  min-height: 1px;
+}
+
