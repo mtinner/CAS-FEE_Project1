@@ -4,7 +4,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
         clean: {
             clean: [
-                'dist'
+                './dist/app',
+                './dist/tmp'
             ]
         },
         copy: {
@@ -49,8 +50,37 @@ module.exports = function (grunt) {
                     includePaths: ['/app/styles/layout']
                 },
                 files: {
-                    'dist/app/main.css': 'app/styles/all.scss'
+                    './dist/app/main.css': './app/styles/all.scss'
                 }
+            }
+        },
+        replace: {
+            css: {
+                options: {
+                    usePrefix: false,
+                    patterns: [
+                        {
+                            match: '*/',
+                            replacement: '*/\n'
+                        }
+                    ]
+                },
+                files: [
+                    {expand: true, flatten: true, cwd: './dist/app', src: ['./main.css'], dest: './dist/app'}
+                ]
+            }
+        },
+        postcss: {
+            options: {
+                processors: [
+                    require('mdcss')({
+                        theme: require('mdcss-theme-github'),
+                        destination: './dist/styleguide'
+                    })
+                ]
+            },
+            dist: {
+                src: './dist/app/**/*.css'
             }
         },
         express: {
@@ -73,6 +103,7 @@ module.exports = function (grunt) {
                     'copy:views',
                     'concat',
                     'sass',
+                    'replace:css',
                     'browserify',
                     'eslint'
                 ]
@@ -95,9 +126,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-postcss');
+
 
     grunt.registerTask('default', [
         'clean',
@@ -106,6 +140,8 @@ module.exports = function (grunt) {
         'copy:views',
         'concat',
         'sass',
+        'replace:css',
+        'postcss',
         'browserify',
         'express',
         'eslint',

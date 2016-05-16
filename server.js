@@ -11,3 +11,6 @@ app.use('/dist', express.static('dist'));
 app.get('/app', function (req, res) {
     res.sendfile('dist/app/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
+app.get('/styleguide', function (req, res) {
+    res.sendfile('dist/styleguide/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});

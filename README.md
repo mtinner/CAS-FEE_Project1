@@ -13,6 +13,10 @@ grunt default
 ## APP
 http://localhost:8080/app
 
+## Styleguide
+http://localhost:9000/app/styleguide
+
+
 ## Inspiration
 ### SCSS
 * http://www.sitepoint.com/architecture-sass-project/

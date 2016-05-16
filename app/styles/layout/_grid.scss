@@ -1,3 +1,17 @@
+/*---
+title:   Grid
+section: Layout
+---
+Grid layout can be applied to any element. Grid layout is based on 6 columns.
+```example:html
+<div class="row">
+    <div class="col-1"><p>col-1</p></div>
+    <div class="col-2"><p>col-2</p></div>
+    <div class="col-3"><p>col-3</p></div>
+</div>
+```
+*/
+
 .row {
   width: 100%;
 
