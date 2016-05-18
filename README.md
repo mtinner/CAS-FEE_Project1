@@ -15,5 +15,5 @@ http://localhost:8080/app
 
 ## Inspiration
 ### SCSS
-* http://www.sitepoint.com/architecture-sass-project/
-* https://css-tricks.com/bem-101/
+* http://www.sitepoint.com/architecture-sass-project
+* https://css-tricks.com/bem-101

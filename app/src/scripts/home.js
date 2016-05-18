@@ -14,10 +14,10 @@ let home = (function () {
 })();
 
 (function declarePublicFunction() {
-    if (!window.Public) {
-        window.Public = {};
+    if (!window.Home) {
+        window.Home = {};
     }
-    window.Public.openCreateNote = home.openCreateNote;
+    window.Home.openCreateNote = home.openCreateNote;
 })();
 
 export {home};

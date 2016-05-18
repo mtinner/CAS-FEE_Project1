@@ -1,7 +1,11 @@
-/*---
-section:Layout
----
-Contains Layout specific classes for aligning,  positioning or sizing elements
-*/
+// helpers
+@import "helpers/variables";
+// base
+@import "base/reset";
+@import "base/typography";
+// layout
 @import "layout/padding";
-@import "layout/_grid";
+@import "layout/grid";
+// components
+@import "components/_button";
+@import "components/_header";
