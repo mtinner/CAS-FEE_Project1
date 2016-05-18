@@ -5,7 +5,7 @@
   cursor: pointer;
   font-weight: bold;
   line-height: 2.5;
-  margin: 4px 0;
+  margin: 4px 16px;
   padding: 0 16px;
   color: $white;
 
@@ -19,7 +19,6 @@
   &--header {
     align-self: flex-end;
     margin-bottom: -28px;
-    margin-left: 9%;
     margin-right: 4%;
     z-index: 10;
   }
