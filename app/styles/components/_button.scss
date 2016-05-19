@@ -8,25 +8,39 @@
   margin: 4px 16px;
   padding: 0 16px;
   color: $white;
+  background-color: $blue;
+
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+  }
 
   &--round {
     box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
     height: 56px;
     width: 56px;
+    min-width: 56px;
     border-radius: 50%;
     padding: 0;
+
   }
   &--header {
     align-self: flex-end;
     margin-bottom: -28px;
-    margin-right: 4%;
     z-index: 10;
+    margin-left: auto;
   }
   &--alert {
     background-color: $red;
   }
 
-  &-primary {
-    background-color: $blue;
+  &--blank {
+    background-color: transparent;
+    box-shadow: none;
+    &:hover {
+      box-shadow: none;
+    }
   }
 }

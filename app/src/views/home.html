@@ -1,17 +1,17 @@
 <div id="home">
     <header class="header">
-        <div class="row">
-            <button class="col-1 btn">By finish Date</button>
-            <button class="col-1 btn">By create Date</button>
-            <button class="col-1 btn">By Importance</button>
+        <div class="row row--items-flex-end">
+            <button class="col-1 btn btn--blank">Order by finish Date</button>
+            <button class="col-1 btn btn--blank">Order by create Date</button>
+            <button class="col-1 btn btn--blank">Order by Importance</button>
             <div class="col-1"></div>
-            <button class="col-1 btn">Show finished</button>
-            <button class="col-1 btn btn--round btn--header btn--alert" onclick="Home.openCreateNote()">
-                +
+            <div class="checkbox">
+                <input type="checkbox"><span class="col-1">Show finished</span>
+            </div>
+            <button class="col-2 btn btn--round btn--header btn--alert" onclick="Home.openCreateNote()">
+                <i>+</i>
             </button>
         </div>
     </header>
-
-    <button class="col-1 btn btn-primary">Test button</button>
-
+</div>
 </div>
