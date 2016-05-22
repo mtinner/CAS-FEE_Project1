@@ -3,11 +3,10 @@ var app = express();
 var noteRouting = require('./noteRouting');
 
 
-
 app.use('/dist', express.static('./dist'));
 
 app.get('/app', function (req, res) {
-    res.sendFile('./dist/app/index.html');
+    res.sendfile('./dist/app/index.html');
 });
 
 app.use('/notes', noteRouting);
