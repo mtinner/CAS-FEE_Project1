@@ -35,12 +35,4 @@
   &--alert {
     background-color: $red;
   }
-
-  &--blank {
-    background-color: transparent;
-    box-shadow: none;
-    &:hover {
-      box-shadow: none;
-    }
-  }
 }

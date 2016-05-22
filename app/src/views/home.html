@@ -1,17 +1,46 @@
 <div id="home">
     <header class="header">
         <div class="row row--items-flex-end">
-            <button class="col-1 btn btn--blank">Order by finish Date</button>
-            <button class="col-1 btn btn--blank">Order by create Date</button>
-            <button class="col-1 btn btn--blank">Order by Importance</button>
-            <div class="col-1"></div>
+            <div class="col-2"></div>
             <div class="checkbox">
-                <input type="checkbox"><span class="col-1">Show finished</span>
+                <input type="checkbox"><span class="col-2">Show finished</span>
             </div>
-            <button class="col-2 btn btn--round btn--header btn--alert" onclick="Home.openCreateNote()">
+            <button class="col-4 btn btn--round btn--header btn--alert" onclick="Home.openCreateNote()">
                 <i>+</i>
             </button>
         </div>
     </header>
-</div>
+    <main>
+        <div class="row row--items-center">
+            <div id="card-container" class="col-10">
+                <div id="card-header" class="row card card--header">
+                    <label class="col-1">&darr; Date</label>
+                    <label class="col-3">Titel</label>
+                    <label class="col-4">Content</label>
+                    <label class="col-1">Priority</label>
+                    <label class="col-1">Done</label>
+                </div>
+                <div class="row card">
+                    <label class="col-1">19.05.16</label>
+                    <label class="col-3">Diese Ziegelwand macht Internet-User wahnsinnig</label>
+                    <label class="col-4">Eine Mauer, die mehr birgt, als man denkt. Das Foto einer Ziegelwand sorgt für
+                        Kopfzerbrechen.</label>
+                    <label class="col-1">1</label>
+                    <div class="col-1 checkbox">
+                        <input type="checkbox">
+                    </div>
+                </div>
+                <div class="row card">
+                    <label class="col-1">18.05.16</label>
+                    <label class="col-3">Bundesrat verteidigt 1000er-Note</label>
+                    <label class="col-4">Die grösste Schweizer Note steht unter Druck, seit die Abschaffung des
+                        500-Euro-Scheins beschlossen wurde. Die Landesregierung nimmt nun ausführlich Stellung.</label>
+                    <label class="col-1">3</label>
+                    <div class="col-1 checkbox">
+                        <input type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
