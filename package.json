@@ -37,6 +37,7 @@
     "main-bower-files": "2.13.0"
   },
   "dependencies": {
+    "body-parser": "1.15.1",
     "jquery": "2.2.3"
   }
 }
