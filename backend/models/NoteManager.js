@@ -29,7 +29,7 @@ var noteManager = (function () {
 
     function getNotes() {
         if (dummyNotes.length > numberOfDummyNotes) {
-            dummyNotes.splice(numberOfDummyNotes, dummyNotes.length - 1)
+            dummyNotes.splice(numberOfDummyNotes, dummyNotes.length - numberOfDummyNotes);
         }
         for (var i = dummyNotes.length; i < numberOfDummyNotes; i++) {
             dummyNotes.push(
@@ -43,20 +43,22 @@ var noteManager = (function () {
         }
         return notes.concat(dummyNotes);
     }
-    
+
     function addNote(note) {
-        return new Note(
+        var note = new Note(
             id++,
             note.title,
             note.text,
             note.priority,
             note.done
         );
+        notes.push(note);
+        return note;
     }
 
     function updateNote(id, newNote) {
         var oldNote = getNote(id);
-        if (newNote) {
+        if (newNote && oldNote) {
             if (newNote.title) {
                 oldNote.title = newNote.title;
             }
