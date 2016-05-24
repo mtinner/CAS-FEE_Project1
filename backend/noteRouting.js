@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 'use strict';
 
-var NoteManager = require('./models/NoteManager');
+var NoteManager = require('./models/NoteRepository');
 
 router.get('/', function (req, res) {
     res.status(200).send(NoteManager.getNotes());

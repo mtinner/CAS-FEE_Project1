@@ -2,7 +2,7 @@
 
 var Note = require('./Note');
 
-var noteManager = (function () {
+var noteRepository = (function () {
     var numberOfDummyNotes = 0,
         notes = [],
         dummyNotes = [],
@@ -77,4 +77,4 @@ var noteManager = (function () {
 
 })();
 
-module.exports = noteManager;
+module.exports = noteRepository;
