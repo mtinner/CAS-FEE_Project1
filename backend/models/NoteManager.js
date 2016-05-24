@@ -60,16 +60,16 @@ var noteManager = (function () {
         var oldNote = getNote(id);
         if (newNote && oldNote) {
             if (newNote.title) {
-                oldNote.title = newNote.title;
+                oldNote.setTitle(newNote.title);
             }
             if (newNote.text) {
-                oldNote.text = newNote.text;
+                oldNote.setText(newNote.text);
             }
             if (newNote.priority) {
-                oldNote.priority = newNote.priority;
+                oldNote.setPriority(newNote.priority);
             }
             if (newNote.done !== undefined) {
-                oldNote.done = newNote.done;
+                oldNote.setDone(newNote.done);
             }
         }
         return oldNote;
