@@ -4,22 +4,21 @@ import $ from 'jquery';
 let createNote = (function () {
 
     return {
-        openHome: openHome
+        registerEvents: registerEvents
     };
 
+    function registerEvents() {
+        $('#open-home').on('click', function () {
+            openHome();
+        });
+    }
+
     function openHome() {
-        $("#home-container").show();
-        $("#create-note-container").hide();
+        $('#home-container').show();
+        $('#create-note-container').hide();
     }
 
 
-})();
-
-(function declarePublicFunction() {
-    if (!window.Public) {
-        window.Public = {};
-    }
-    window.Public.openHome = createNote.openHome;
 })();
 
 export {createNote};

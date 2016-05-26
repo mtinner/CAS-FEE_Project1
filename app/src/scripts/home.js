@@ -14,8 +14,8 @@ let home = (function () {
     }
 
     function openCreateNote() {
-        $("#home-container").hide();
-        $("#create-note-container").show();
+        $('#home-container').hide();
+        $('#create-note-container').show();
     }
 })();
 
