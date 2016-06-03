@@ -1,13 +1,13 @@
-.prio {
-  .prio__radio {
+.prio .prio {
+  &__radio {
     display: none;
   }
-  .prio__icon {
+  &__icon {
     font-size: 2em;
     font-weight: bold;
     cursor: pointer;
   }
-  .prio__radio:checked ~ .prio__icon {
+  &__radio:checked ~ .prio__icon {
     color: lightgrey;
   }
 }

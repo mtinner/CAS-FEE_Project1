@@ -1,0 +1,11 @@
+.check .check {
+  &__icon:after {
+    content: "O";
+  }
+  &__checkbox:checked +.check__icon:after {
+    content: "X";
+  }
+  &__chekckbox {
+    display: none;
+  }
+}
