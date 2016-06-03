@@ -4,11 +4,12 @@ import $ from 'jquery';
 let createNote = (function () {
 
     return {
-        registerEvents: registerEvents
+        registerEvents: registerEvents,
+        openHome: openHome
     };
 
     function registerEvents() {
-        $('#open-home').on('click', function () {
+        $('#edit__cancel').on('click', function () {
             openHome();
         });
     }

@@ -5,8 +5,8 @@ import {createNote} from './create-note';
 
 //after Page is loaded
 $(function () {
-    //$('#home-container').hide();
-    $('#create-note-container').hide();
+    $('#home-container').hide();
+    //$('#create-note-container').hide();
     
     $('#home-container').load('/dist/app/views/home.html', function () {
         home.registerEvents();
