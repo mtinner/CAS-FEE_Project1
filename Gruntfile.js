@@ -16,6 +16,13 @@ module.exports = function (grunt) {
                         src: './jquery.js',
                         dest: './dist/tmp/vendor',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: './node_modules/font-awesome/fonts',
+                        src: './*',
+                        dest: './dist/fonts',
+                        filter: 'isFile'
                     }
                 ]
             },
@@ -81,7 +88,7 @@ module.exports = function (grunt) {
         browserify: {
             dist: {
                 options: {
-                    transform: [['babelify', {presets: ['es2015']}]]
+                    transform: [['babelify', { presets: ['es2015'] }]]
                 },
                 src: ['app/src/scripts/**/*.js'],
                 dest: 'dist/app/main.bundle.js'

@@ -1,13 +1,21 @@
-.prio .prio {
-  &__radio {
-    display: none;
-  }
-  &__icon {
-    font-size: 2em;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  &__radio:checked ~ .prio__icon {
-    color: lightgrey;
+.prio {
+  display: flex;
+  margin-top: 0.2em;
+  .prio {
+    &__radio {
+      display: none;
+    }
+    &__icon {
+      @extend .fa;
+      @extend .fa-bolt;
+      @extend .fa-lg;
+      width: 1em;
+      color: $blue;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    &__radio:checked ~ .prio__icon {
+      color: $darkgrey;
+    }
   }
 }

@@ -1,16 +1,20 @@
-.check .check {
-  &__icon {
-    display: inline-block;
-    border: 2px solid $blue;
-    border-radius: 3px;
-    margin: 2px;
-    width: 1em;
-    height: 1em;
-  }
-  &__checkbox:checked +.check__icon {
-    background-color: $lightblue;
-  }
-  &__checkbox {
-    display: none;
+.check {
+  .check {
+    &__icon {
+      cursor: pointer;
+      color: transparent;
+      border: 2px solid $blue;
+      border-radius: 3px;
+      margin: 2px;
+      width: 1em;
+      height: 1em;
+    }
+    &__checkbox:checked +.check__icon {
+      color: white;
+      background-color: $blue;
+    }
+    &__checkbox {
+      display: none;
+    }
   }
 }
