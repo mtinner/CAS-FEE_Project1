@@ -1,5 +1,7 @@
 .prio {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   margin-top: 0.2em;
   .prio {
     &__radio {
@@ -10,12 +12,15 @@
       @extend .fa-bolt;
       @extend .fa-lg;
       width: 1em;
-      color: $blue;
+      color: $darkgrey;
       font-size: 1em;
       cursor: pointer;
     }
-    &__radio:checked ~ .prio__icon {
-      color: $darkgrey;
+    &__radio:checked ~.prio__icon {
+      color: $lightblue;
+    }
+    &__icon:hover, &__icon:hover ~.prio__icon {
+      color: $blue!important;
     }
   }
 }

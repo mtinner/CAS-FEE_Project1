@@ -1,18 +1,32 @@
 .check {
   .check {
     &__icon {
+      @extend .fa;
+      @extend .fa-check;
       cursor: pointer;
       color: transparent;
-      border: 2px solid $blue;
+      border: 2px solid $lightblue;
       border-radius: 3px;
       margin: 2px;
       width: 1em;
       height: 1em;
     }
+    
     &__checkbox:checked +.check__icon {
       color: white;
-      background-color: $blue;
+      background-color: $lightblue;
     }
+    
+    &__icon:hover {
+      color: white;
+      background-color: $lightblue!important;
+      border: 2px solid $blue;
+    }
+    
+    &__checkbox:checked +.check__icon:hover {
+      background-color: $blue!important;
+    }
+
     &__checkbox {
       display: none;
     }
