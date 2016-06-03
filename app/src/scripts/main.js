@@ -5,14 +5,16 @@ import {details} from './details';
 
 //after Page is loaded
 $(function () {
-    $('#home-container').hide();
-    //$('#details-container').hide();
+    var homeContainer = $('#home-container');
+    var detailsContainer = $('#details-container');
+    //homeContainer.hide();
+    detailsContainer.hide();
     
-    $('#home-container').load('/dist/app/views/home.html', function () {
+    homeContainer.load('/dist/app/views/home.html', function () {
         home.registerEvents();
     });
-    $('#details-container').load('/dist/app/views/details.html', function () {
-        details.registerEvents(); 
+    detailsContainer.load('/dist/app/views/details.html', function () {
+        details.registerEvents();
     });
 });
 
