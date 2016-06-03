@@ -1,0 +1,21 @@
+.input {
+  background: transparent;
+  border-bottom: 1px solid $darkgrey;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 2px;
+  width: 100%;
+
+  &:focus {
+    border-bottom: 2px solid $blue;
+    padding-bottom: 1px;
+  }
+
+  &__label {
+    color: $lightblue;
+    display: inline-block;
+    font-size: 0.7em;
+    margin: 1em 0 0.4em 0;
+  }
+}
