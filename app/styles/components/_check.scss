@@ -1,11 +1,16 @@
 .check .check {
-  &__icon:after {
-    content: "O";
+  &__icon {
+    display: inline-block;
+    border: 2px solid $blue;
+    border-radius: 3px;
+    margin: 2px;
+    width: 1em;
+    height: 1em;
   }
-  &__checkbox:checked +.check__icon:after {
-    content: "X";
+  &__checkbox:checked +.check__icon {
+    background-color: $lightblue;
   }
-  &__chekckbox {
+  &__checkbox {
     display: none;
   }
 }
