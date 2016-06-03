@@ -4,8 +4,7 @@ import $ from 'jquery';
 let createNote = (function () {
 
     return {
-        registerEvents: registerEvents,
-        openHome: openHome
+        registerEvents: registerEvents
     };
 
     function registerEvents() {
