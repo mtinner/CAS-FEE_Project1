@@ -4,20 +4,20 @@ import $ from 'jquery';
 let home = (function () {
 
     return {
-        openCreateNote: openCreateNote
+        registerEvents: registerEvents
     };
 
+    function registerEvents() {
+        $('#open-create-note').on('click', function () {
+            openCreateNote();
+        });
+    }
+
     function openCreateNote() {
-        $("#home-container").hide();
-        $("#create-note-container").show();
+        $('#home-container').hide();
+        $('#create-note-container').show();
     }
 })();
 
-(function declarePublicFunction() {
-    if (!window.Home) {
-        window.Home = {};
-    }
-    window.Home.openCreateNote = home.openCreateNote;
-})();
 
 export {home};
