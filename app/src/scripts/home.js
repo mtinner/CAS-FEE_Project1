@@ -1,8 +1,6 @@
 import $ from 'jquery';
 
-
 let home = (function () {
-
     return {
         registerEvents: registerEvents
     };

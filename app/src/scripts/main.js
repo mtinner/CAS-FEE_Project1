@@ -7,7 +7,7 @@ import {createNote} from './create-note';
 $(function () {
     //$('#home-container').hide();
     $('#create-note-container').hide();
-    
+
     $('#home-container').load('/dist/app/views/home.html', function () {
         home.registerEvents();
     });
