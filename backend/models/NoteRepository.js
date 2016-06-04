@@ -3,8 +3,7 @@
 var Note = require('./Note');
 
 var noteRepository = (function () {
-    var numberOfDummyNotes = 0,
-        notes = [],
+    var notes = [],
         dummyNotes = [],
         id = 0;
 
@@ -16,18 +15,8 @@ var noteRepository = (function () {
         updateNote: updateNote
     };
 
-    function setNumberOfDummyNotes(number) {
-        numberOfDummyNotes = parseInt(number);
-    }
-
-    function getNote(id) {
-        id = parseInt(id);
-        return notes.concat(dummyNotes).find(function (note) {
-            return note.id === id;
-        })
-    }
-
-    function getNotes() {
+    function setNumberOfDummyNotes(numberOfDummyNotes) {
+        numberOfDummyNotes = parseInt(numberOfDummyNotes);
         if (dummyNotes.length > numberOfDummyNotes) {
             dummyNotes.splice(numberOfDummyNotes, dummyNotes.length - numberOfDummyNotes);
         }
@@ -41,6 +30,16 @@ var noteRepository = (function () {
                     i % 2 == 0
                 ));
         }
+    }
+
+    function getNote(id) {
+        id = parseInt(id);
+        return notes.concat(dummyNotes).find(function (note) {
+            return note.id === id;
+        })
+    }
+
+    function getNotes() {
         return notes.concat(dummyNotes);
     }
 
