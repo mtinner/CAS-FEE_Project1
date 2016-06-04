@@ -21,6 +21,7 @@
     "babelify": "7.3.0",
     "browserify": "13.0.0",
     "eslint": "2.9.0",
+    "font-awesome": "^4.6.3",
     "grunt": "1.0.1",
     "grunt-babel": "6.0.0",
     "grunt-browserify": "5.0.0",
@@ -33,11 +34,12 @@
     "grunt-express-server": "0.5.3",
     "grunt-sass": "1.2.0",
     "load-grunt-tasks": "3.5.0",
-    "main-bower-files": "2.13.0"
+    "main-bower-files": "2.13.0",
+    "open-sans-fontface": "^1.4.0"
   },
   "dependencies": {
     "body-parser": "1.15.1",
-    "jquery": "2.2.3",
-    "express": "4.13.4"
+    "express": "4.13.4",
+    "jquery": "2.2.3"
   }
 }

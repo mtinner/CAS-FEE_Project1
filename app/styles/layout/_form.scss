@@ -1,8 +1,17 @@
 .form {
   margin: 1em;
   padding: 1em;
-
+  
+  &__labeled {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
   &__btn-section {
     margin-top: 1em;
+  }
+  
+  &__labeled .input:focus +.input__label {
+    color: $blue;
   }
 }
