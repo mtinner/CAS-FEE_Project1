@@ -37,7 +37,8 @@
   },
   "dependencies": {
     "body-parser": "1.15.1",
-    "jquery": "2.2.3",
-    "express": "4.13.4"
+    "express": "4.13.4",
+    "handlebars": "^4.0.5",
+    "jquery": "2.2.3"
   }
 }
