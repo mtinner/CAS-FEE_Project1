@@ -30,6 +30,13 @@ module.exports = function (grunt) {
                         src: '**/*',
                         dest: './dist/fonts',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: './node_modules/handlebars/dist',
+                        src: './handlebars.js',
+                        dest: './dist/tmp/vendor',
+                        filter: 'isFile'
                     }
                 ]
             },
@@ -53,7 +60,7 @@ module.exports = function (grunt) {
                 separator: ';\n'
             },
             dist: {
-                src: ['./dist/tmp/vendor/jquery.js'],
+                src: ['./dist/tmp/vendor/*.js'],
                 dest: './dist/app/vendor.concat.js'
             }
         },
