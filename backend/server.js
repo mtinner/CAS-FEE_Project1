@@ -19,4 +19,4 @@ app.use('/notes', noteRouting);
 
 
 app.listen(9000);
-console.log("App listening on port 9000");
+console.log('App listening on port 9000');

@@ -1,0 +1,57 @@
+.check {
+
+  .check__label {
+    color: white;
+    cursor: pointer;
+  }
+
+  .check__icon {
+    @extend .fa;
+    @extend .fa-check;
+    cursor: pointer;
+    color: transparent;
+    border: 2px solid $lightblue;
+    border-radius: 3px;
+    margin: 2px;
+    width: 1em;
+    height: 1em;
+  }
+
+  .check__checkbox:checked + .check__icon {
+    color: white;
+    background-color: $lightblue;
+  }
+
+  .check__checkbox:checked + .check__icon:hover {
+    background-color: $blue !important;
+  }
+
+  .check__checkbox {
+    display: none;
+  }
+}
+
+.check:hover .check__icon {
+  color: white;
+  background-color: $lightblue !important;
+  border: 2px solid $blue;
+}
+
+.check--light {
+  @extend .check;
+  color: white !important; //todo: not working
+
+  .check__checkbox + .check__icon {
+    color: transparent;
+    background-color: transparent !important;
+    border: 2px solid $lightblue !important;
+  }
+  .check__checkbox:hover + .check__icon {
+    color: $lightblue;
+    background-color: transparent !important;
+    border: 2px solid $lightblue !important;
+  }
+  .check__checkbox:checked + .check__icon {
+    color: white;
+  }
+}

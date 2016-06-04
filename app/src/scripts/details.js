@@ -1,24 +1,20 @@
 import $ from 'jquery';
 
 
-let createNote = (function () {
+export const details = (function () {
 
     return {
         registerEvents: registerEvents
     };
 
     function registerEvents() {
-        $('#open-home').on('click', function () {
+        $('#details__cancel').on('click', function () {
             openHome();
         });
     }
 
     function openHome() {
+        $('#details-container').hide();
         $('#home-container').show();
-        $('#create-note-container').hide();
     }
-
-
 })();
-
-export {createNote};
