@@ -37,6 +37,20 @@ module.exports = function (grunt) {
                         src: './handlebars.js',
                         dest: './dist/tmp/vendor',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: './node_modules/font-awesome/fonts',
+                        src: './*',
+                        dest: './dist/fonts',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: './node_modules/open-sans-fontface/fonts',
+                        src: '**/*',
+                        dest: './dist/fonts',
+                        filter: 'isFile'
                     }
                 ]
             },
