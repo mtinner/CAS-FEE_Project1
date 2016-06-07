@@ -32,11 +32,11 @@
     margin-left: auto;
   }
   &--alert {
-    color: white!important;
+    color: white !important;
     background-color: $red;
   }
-  
-  &__form {
+
+  &--form {
     float: right;
   }
 }
