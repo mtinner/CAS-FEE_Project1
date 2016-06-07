@@ -1,5 +1,4 @@
 .check {
-
   .check__label {
     color: white;
     cursor: pointer;
@@ -15,6 +14,10 @@
     margin: 2px;
     width: 1em;
     height: 1em;
+
+    &:hover {
+      border: 2px solid $blue;
+    }
   }
 
   .check__checkbox:checked + .check__icon {
@@ -23,7 +26,7 @@
   }
 
   .check__checkbox:checked + .check__icon:hover {
-    background-color: $blue !important;
+    background-color: $blue;
   }
 
   .check__checkbox {
@@ -31,27 +34,21 @@
   }
 }
 
-.check:hover .check__icon {
-  color: white;
-  background-color: $lightblue !important;
-  border: 2px solid $blue;
-}
-
-.check--light {
+.check.check--light {
   @extend .check;
-  color: white !important; //todo: not working
 
-  .check__checkbox + .check__icon {
-    color: transparent;
-    background-color: transparent !important;
-    border: 2px solid $lightblue !important;
+  .check__icon:hover {
+    border: 2px solid white;
   }
-  .check__checkbox:hover + .check__icon {
-    color: $lightblue;
-    background-color: transparent !important;
-    border: 2px solid $lightblue !important;
-  }
+
   .check__checkbox:checked + .check__icon {
-    color: white;
+    color: $blue;
+    background-color: $lightblue;
+  }
+
+  .check__checkbox:checked + .check__icon:hover {
+    border: 2px solid white;
+    color: $blue;
+    background-color: white;
   }
 }
