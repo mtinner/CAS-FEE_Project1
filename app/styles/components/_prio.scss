@@ -1,0 +1,32 @@
+.prio {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-top: 0.2em;
+
+  .prio__radio {
+    display: none;
+  }
+
+  .prio__icon {
+    @extend .fa;
+    @extend .fa-bolt;
+    @extend .fa-lg;
+    padding: 1px;
+    width: 1em;
+    color: $darkgrey;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .prio__radio:checked ~ .prio__icon {
+    color: $lightblue;
+  }
+
+  .prio__icon:hover,
+  .prio__icon:hover ~ .prio__icon,
+  .prio__radio:checked ~ .prio__icon:hover,
+  .prio__radio:checked ~ .prio__icon:hover ~ .prio__icon {
+    color: $blue;
+  }
+}

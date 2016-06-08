@@ -1,18 +1,20 @@
 import $ from 'jquery';
 import {home} from './home';
-import {createNote} from './create-note';
+import {details} from './details';
 
 
 //after Page is loaded
 $(function () {
-    //$('#home-container').hide();
-    $('#create-note-container').hide();
+    var homeContainer = $('#home-container');
+    var detailsContainer = $('#details-container');
+    //homeContainer.hide();
+    detailsContainer.hide();
     
-    $('#home-container').load('/dist/app/views/home.html', function () {
+    homeContainer.load('/dist/app/views/home.html', function () {
         home.registerEvents();
     });
-    $('#create-note-container').load('/dist/app/views/create-note.html', function () {
-        createNote.registerEvents();
+    detailsContainer.load('/dist/app/views/details.html', function () {
+        details.registerEvents();
     });
 });
 
