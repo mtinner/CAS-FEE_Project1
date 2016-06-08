@@ -8,7 +8,7 @@ export const details = (function () {
     };
 
     function registerEvents() {
-        $('#details__cancel').on('click', function () {
+        $('#details-cancel').on('click', function () {
             openHome();
         });
     }
