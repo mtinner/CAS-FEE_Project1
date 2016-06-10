@@ -23,11 +23,16 @@
   }
 
   .dropdown__content:before {
+    color: $darkgrey;
     content: "\f078";
     font-family: FontAwesome, sans-serif;
-    right: 3px;
+    right: 0.2em;
     position:absolute;
-    top: 3px;
+    top: 0.2em;
+  }
+
+  .dropdown__content:hover:before {
+    color: $blue;
   }
 
   .dropdown__checkbox:checked + .dropdown__content {
