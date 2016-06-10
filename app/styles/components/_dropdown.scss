@@ -1,0 +1,42 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-height: inherit;
+  margin: 2px;
+
+  .dropdown__checkbox {
+    display: none;
+  }
+
+  .dropdown__content {
+    @extend .card;
+
+    cursor: pointer;
+    position: relative;
+    padding: 0.2em 1.5em 0.2em 0.2em;
+    display: block;
+    overflow: hidden;
+    min-height: 2.5em;
+    height: 2.5em;
+  }
+
+  .dropdown__content:before {
+    content: "\f078";
+    font-family: FontAwesome, sans-serif;
+    right: 3px;
+    position:absolute;
+    top: 3px;
+  }
+
+  .dropdown__checkbox:checked + .dropdown__content {
+    height: 100%;
+    overflow: visible;
+    //z-index: 100;
+  }
+
+  .dropdown__checkbox:checked + .dropdown__content:before {
+    content: "\f077";
+  }
+}
