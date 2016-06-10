@@ -1,0 +1,11 @@
+#style-switcher {
+  display: inline-block;
+  position: absolute;
+  color: $lightblue;
+  margin: 0.2em;
+  text-decoration: none;
+}
+
+#style-switcher:hover {
+  color: white;
+}
