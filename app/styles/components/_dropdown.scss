@@ -1,10 +1,6 @@
 .dropdown {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  max-height: inherit;
-  margin: 2px;
+  margin: 0.2em;
+  max-height: 0;
 
   .dropdown__checkbox {
     display: none;
@@ -38,7 +34,7 @@
   .dropdown__checkbox:checked + .dropdown__content {
     height: 100%;
     overflow: visible;
-    //z-index: 100;
+    z-index: 100;
   }
 
   .dropdown__checkbox:checked + .dropdown__content:before {
