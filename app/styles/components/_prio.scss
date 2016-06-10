@@ -30,3 +30,22 @@
     color: $blue;
   }
 }
+
+.theme-dark {
+  .prio__icon {
+    color: #c3c3c3;
+  }
+
+  .prio {
+    .prio__radio:checked ~ .prio__icon {
+      color: #696969;
+    }
+
+    .prio__icon:hover,
+    .prio__icon:hover ~ .prio__icon,
+    .prio__radio:checked ~ .prio__icon:hover,
+    .prio__radio:checked ~ .prio__icon:hover ~ .prio__icon {
+      color: black;
+    }
+  }
+}

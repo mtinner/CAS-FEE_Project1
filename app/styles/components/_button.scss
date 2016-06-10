@@ -39,3 +39,13 @@
     float: right;
   }
 }
+
+.theme-dark {
+  .btn {
+    background-color: black;
+
+    &--alert {
+      background-color: black;
+    }
+  }
+}

@@ -4,3 +4,9 @@
   background: $blue;
   z-index: 5;
 }
+
+.theme-dark {
+  .header {
+    background: #2a2a2a;
+  }
+}

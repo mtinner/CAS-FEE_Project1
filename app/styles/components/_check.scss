@@ -52,3 +52,42 @@
     background-color: white;
   }
 }
+
+.theme-dark {
+  .check {
+    .check__icon {
+      border-color: grey;
+
+      &:hover {
+        border-color: black;
+      }
+    }
+
+    .check__checkbox:checked + .check__icon {
+      color: white;
+      background-color: grey;
+    }
+
+    .check__checkbox:checked + .check__icon:hover {
+      background-color: black;
+    }
+  }
+
+  .check.check--light {
+    .check__icon:hover {
+      border-color: white;
+    }
+
+    .check__checkbox:checked + .check__icon {
+      color: black;
+      background-color: $darkgrey;
+      border-color: $darkgrey;
+    }
+
+    .check__checkbox:checked + .check__icon:hover {
+      border-color: white;
+      color: black;
+      background-color: white;
+    }
+  }
+}

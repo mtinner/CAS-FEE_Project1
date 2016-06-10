@@ -4,8 +4,18 @@
   color: $lightblue;
   margin: 0.2em;
   text-decoration: none;
+
+  &:hover {
+    color: white;
+  }
 }
 
-#style-switcher:hover {
-  color: white;
+.theme-dark {
+  #style-switcher {
+    color: $darkgrey;
+
+    &:hover {
+      color: white;
+    }
+  }
 }
