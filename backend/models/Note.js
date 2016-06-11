@@ -2,7 +2,11 @@
 
 var Note = function (id, title, text, priority, done) {
     this.id = id;
-    this.createdAt = new Date();
+    this.createdAt = (function () {
+        var date = new Date();
+        date.setDate(date.getDate() + id);
+        return date;
+    })();
     this.title = title;
     this.text = text;
     this.priority = priority;

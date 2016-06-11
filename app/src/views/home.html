@@ -11,71 +11,48 @@
                     class="col-4 btn btn--round btn--header btn--alert fa fa-plus"></button>
         </div>
     </header>
-    <main>
-        <div class="row row--items-center">
-            <div class="col-10">
-                <div class="row card card--header">
-                    <label class="col-1">&darr; Date</label>
-                    <label class="col-3">Titel</label>
-                    <label class="col-4">Cont'ent</label>
-                    <label class="col-1">Priority</label>
-                    <label class="col-1">Done</label>
-                </div>
-                <div class="row card">
-                    <label class="col-1">19.05.16</label>
-                    <label class="col-3">Diese Ziegelwand macht Internet-User wahnsinnig</label>
-                    <div class="col-4">
-                        <div class="dropdown">
-                            <input class="dropdown__checkbox" id="dropdown-1" type="checkbox">
-                            <label class="dropdown__content" for="dropdown-1">
-                                Eine Mauer, die mehr birgt, als man denkt. Das Foto einer Ziegelwand
-                                sorgt für
-                                Kopfzerbrechen. Eine Mauer, die mehr birgt, als man denkt. Das Foto einer Ziegelwand
-                                sorgt für
-                                Kopfzerbrechen. Eine Mauer, die mehr birgt, als man denkt. Das Foto einer Ziegelwand
-                                sorgt für
-                                Kopfzerbrechen. Eine Mauer, die mehr birgt, als man denkt. Das Foto einer Ziegelwand
-                                sorgt für
-                                Kopfzerbrechen.
-                            </label>
+    <main id="home-main">
+        <script id="home-template" type="text/x-handlebars-template">
+
+
+            <div class="row row--items-center">
+                <div class="col-10">
+
+                    <div class="row card card--header">
+                        {{#if notes.length}}
+                        <label class="col-1">&darr; Date</label>
+                        <label class="col-3">Titel</label>
+                        <label class="col-4">Content</label>
+                        <label class="col-1">Priority</label>
+                        <label class="col-1">Done</label>
+                        {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
+                    </div>
+                    {{#notes}}
+                    <div class="row card">
+                        <label class="col-1">{{date createdAt}}</label>
+                        <label class="col-3">{{title}}</label>
+                        <div class="col-4">
+                            <div class="dropdown">
+                                <input class="dropdown__checkbox" id="dropdown-{{id}}" type="checkbox">
+                                <label class="dropdown__content" for="dropdown-{{id}}">
+                                    {{text}}
+                                </label>
+                            </div>
+                        </div>
+                        <label class="col-1">{{priority}}</label>
+                        <div class="col-1 checkbox">
+                            <div class="check">
+                                <input id="home__entry-{{id}}__check" type="checkbox"
+                                       class="check__checkbox" {{#if done}}checked="checked" {{/if}}>
+                                <label for="home__entry-{{id}}__check" class="check__icon"></label>
+                            </div>
                         </div>
                     </div>
-                    <label class="col-1">1</label>
-                    <div class="col-1 checkbox">
-                        <div class="check">
-                            <input id="home__entry-1__check" type="checkbox"
-                                   class="check__checkbox">
-                            <label for="home__entry-1__check" class="check__icon"></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row card">
-                    <label class="col-1">18.05.16</label>
-                    <label class="col-3">Bundesrat verteidigt 1000er-Note</label>
-                    <div class="col-4">
-                        <div class="dropdown">
-                            <input class="dropdown__checkbox" id="dropdown-2" type="checkbox">
-                            <label class="dropdown__content" for="dropdown-2">
-                                Die grösste Schweizer Note steht unter Druck, seit die
-                                Abschaffung des
-                                500-Euro-Scheins beschlossen wurde. Die Landesregierung nimmt nun
-                                ausführlich Stellung. Die grösste Schweizer Note steht unter Druck, seit die
-                                Abschaffung des
-                                500-Euro-Scheins beschlossen wurde. Die Landesregierung nimmt nun
-                                ausführlich Stellung.
-                            </label>
-                        </div>
-                    </div>
-                    <label class="col-1">3</label>
-                    <div class="col-1 checkbox">
-                        <div class="check">
-                            <input id="home__entry-2__check" type="checkbox"
-                                   class="check__checkbox">
-                            <label for="home__entry-2__check" class="check__icon"></label>
-                        </div>
-                    </div>
+                    {{/notes}}
+
                 </div>
             </div>
-        </div>
+
+        </script>
     </main>
 </div>
