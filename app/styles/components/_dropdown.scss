@@ -1,0 +1,48 @@
+.dropdown {
+  margin: 0.2em;
+  max-height: 0;
+
+  .dropdown__checkbox {
+    display: none;
+  }
+
+  .dropdown__content {
+    @extend .card;
+
+    cursor: pointer;
+    position: relative;
+    padding: 0.2em 1.5em 0.2em 0.2em;
+    display: block;
+    overflow: hidden;
+    min-height: 2.5em;
+    height: 2.5em;
+  }
+
+  .dropdown__content:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .16), 0 6px 12px rgba(0, 0, 0, .32);
+  }
+
+  .dropdown__content:before {
+    color: $darkgrey;
+    content: "\f078";
+    font-family: FontAwesome, sans-serif;
+    right: 0.2em;
+    position:absolute;
+    top: 0.2em;
+  }
+
+  .dropdown__content:hover:before {
+    color: $blue;
+  }
+
+  .dropdown__checkbox:checked + .dropdown__content {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .16), 0 6px 12px rgba(0, 0, 0, .32);
+    height: 100%;
+    overflow: visible;
+    z-index: 100;
+  }
+
+  .dropdown__checkbox:checked + .dropdown__content:before {
+    content: "\f077";
+  }
+}
