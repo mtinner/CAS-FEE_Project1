@@ -14,7 +14,6 @@
     <main id="home-main">
         <script id="home-template" type="text/x-handlebars-template">
 
-
             <div class="row row--items-center">
                 <div class="col-10">
 
@@ -39,7 +38,18 @@
                                 </label>
                             </div>
                         </div>
-                        <label class="col-1">{{priority}}</label>
+                        <label class="col-1 prio">
+                            <input class="prio__radio" id="details-prio3-{{id}}" type="radio" name="prio-{{id}}"
+                                   {{#ifCond priority 3}}checked="checked" {{/ifCond}}>
+                            <label class="prio__icon" for="details-prio3-{{id}}"></label>
+                            <input class="prio__radio" id="details-prio2-{{id}}" type="radio" name="prio-{{id}}"
+                                   {{#ifCond priority 2}}checked="checked" {{/ifCond}}>
+                            <label class="prio__icon" for="details-prio2-{{id}}"></label>
+                            <input class="prio__radio" id="details-prio1-{{id}}" type="radio" name="prio-{{id}}"
+                                   {{#ifCond priority 1}}checked="checked" {{/ifCond}}>
+                            <label class="prio__icon" for="details-prio1-{{id}}"></label>
+                        </label>
+
                         <div class="col-1 checkbox">
                             <div class="check">
                                 <input id="home__entry-{{id}}__check" type="checkbox"

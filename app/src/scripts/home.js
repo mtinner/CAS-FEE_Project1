@@ -17,17 +17,26 @@ export const home = (function (Handlebars) {
         function success(data) {
             var source = $('#home-template').html();
             var template = Handlebars.compile(source);
-            
-            Handlebars.registerHelper('date', function (createdAt) {
-                return new Date(createdAt).toLocaleDateString();
-            });
-            
+            registerHandlebarsHelper();
             $('#home-main').append(template({notes: data}));
         }
 
         function error(data) {
             alert(data);
         }
+    }
+
+    function registerHandlebarsHelper() {
+        Handlebars.registerHelper('date', function (createdAt) {
+            return new Date(createdAt).toLocaleDateString();
+        });
+
+        Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+            if (v1.toString() === v2.toString()) {
+                return options.fn(this);
+            }
+            return options.inverse(this);
+        });
     }
 
     function registerEvents() {
