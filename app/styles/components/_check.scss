@@ -1,10 +1,10 @@
 .check {
-  .check__label {
+  &__label {
     color: white;
     cursor: pointer;
   }
 
-  .check__icon {
+  &__icon {
     @extend .fa;
     @extend .fa-check;
     cursor: pointer;
@@ -20,42 +20,42 @@
     }
   }
 
-  .check__checkbox:checked + .check__icon {
+  &__checkbox:checked + &__icon {
     color: white;
     background-color: $lightblue;
   }
 
-  .check__checkbox:checked + .check__icon:hover {
+  &__checkbox:checked + &__icon:hover {
     background-color: $blue;
   }
 
-  .check__checkbox {
+  &__checkbox {
     display: none;
   }
-}
 
-.check.check--light {
-  @extend .check;
+  &.check--light {
+    .check {
+      &__icon:hover {
+        border: 2px solid white;
+      }
 
-  .check__icon:hover {
-    border: 2px solid white;
-  }
+      &__checkbox:checked + .check__icon {
+        color: $blue;
+        background-color: $lightblue;
+      }
 
-  .check__checkbox:checked + .check__icon {
-    color: $blue;
-    background-color: $lightblue;
-  }
-
-  .check__checkbox:checked + .check__icon:hover {
-    border: 2px solid white;
-    color: $blue;
-    background-color: white;
+      &__checkbox:checked + .check__icon:hover {
+        border: 2px solid white;
+        color: $blue;
+        background-color: white;
+      }
+    }
   }
 }
 
 .theme-dark {
   .check {
-    .check__icon {
+    &__icon {
       border-color: grey;
 
       &:hover {
@@ -63,31 +63,34 @@
       }
     }
 
-    .check__checkbox:checked + .check__icon {
+    &__checkbox:checked + .check__icon {
       color: white;
       background-color: grey;
     }
 
-    .check__checkbox:checked + .check__icon:hover {
+    &__checkbox:checked + .check__icon:hover {
       background-color: black;
     }
-  }
 
-  .check.check--light {
-    .check__icon:hover {
-      border-color: white;
-    }
+    &.check--light {
+      .check {
 
-    .check__checkbox:checked + .check__icon {
-      color: black;
-      background-color: $darkgrey;
-      border-color: $darkgrey;
-    }
+        &__icon:hover {
+          border-color: white;
+        }
 
-    .check__checkbox:checked + .check__icon:hover {
-      border-color: white;
-      color: black;
-      background-color: white;
+        &__checkbox:checked + .check__icon {
+          color: black;
+          background-color: $darkgrey;
+          border-color: $darkgrey;
+        }
+
+        &__checkbox:checked + .check__icon:hover {
+          border-color: white;
+          color: black;
+          background-color: white;
+        }
+      }
     }
   }
 }
