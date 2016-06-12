@@ -14,7 +14,7 @@ $(function () {
         home.init();
     });
     detailsContainer.load('/dist/app/views/details.html', function () {
-        details.registerEvents();
+        details.init();
     });
 });
 

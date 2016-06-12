@@ -7,7 +7,7 @@ let noteService = (function () {
     return {
         //getNote: getNote,
         getNotes: getNotes,
-        //addNote: addNote,
+        addNote: addNote,
         updateNote: updateNote
     };
 
@@ -37,6 +37,23 @@ let noteService = (function () {
         });
     }
 
+    function addNote(noteObj) {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                    method: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    url: noteAPI,
+                    data: JSON.stringify(noteObj)
+                })
+                .done(function (data) {
+                    resolve(data);
+                })
+                .fail(function () {
+                    reject('Failed to get Note');
+                });
+        });
+    }
+
     function updateNote(id, noteObj) {
         id = parseInt(id);
         var apiLink = `${noteAPI}/${id}`;
@@ -45,7 +62,6 @@ let noteService = (function () {
                     method: 'PUT', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
                     contentType: 'application/json; charset=utf-8',
                     url: apiLink, // A valid URL
-                    //headers: {'X-HTTP-Method-Override': 'PUT'}, // X-HTTP-Method-Override set to PUT.
                     data: JSON.stringify(noteObj) // Some data e.g. Valid JSON as a string
                 })
                 .done(function (data) {
