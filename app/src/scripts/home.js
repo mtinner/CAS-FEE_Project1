@@ -9,7 +9,7 @@ export const home = (function (Handlebars) {
     };
 
     function init() {
-        registerEvents();
+        registerButtonEvents();
 
         noteService.getNotes()
             .then(success, error);
@@ -19,6 +19,8 @@ export const home = (function (Handlebars) {
             var template = Handlebars.compile(source);
             registerHandlebarsHelper();
             $('#home-main').append(template({notes: data}));
+            registerRadioEvents();
+            registerCheckboxEvents();
         }
 
         function error(data) {
@@ -39,9 +41,27 @@ export const home = (function (Handlebars) {
         });
     }
 
-    function registerEvents() {
+    function registerButtonEvents() {
         $('#open-details').on('click', function () {
             openDetails();
+        });
+    }
+
+
+    function registerRadioEvents() {
+        $('[id^="home-prio"]:radio').change(function (event) {
+            noteService.updateNote(parseInt(event.target.name), {
+                priority: event.target.value
+            });
+        });
+    }
+
+    function registerCheckboxEvents() {
+        $('[id^="home__entry"]:checkbox').change(function (event) {
+            console.log($(this).context.checked);
+            noteService.updateNote(parseInt(event.target.name), {
+                done: $(this).context.checked
+            });
         });
     }
 
@@ -49,6 +69,5 @@ export const home = (function (Handlebars) {
         $('#home-container').hide();
         $('#details-container').show();
     }
-
 
 })(Handlebars);
