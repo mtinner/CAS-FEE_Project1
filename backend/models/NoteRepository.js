@@ -46,6 +46,7 @@ var noteRepository = (function () {
     function addNote(note) {
         var note = new Note(
             id++,
+            new Date(note.createdAt),
             note.title,
             note.text,
             note.priority,
@@ -59,16 +60,19 @@ var noteRepository = (function () {
         var oldNote = getNote(id);
         if (newNote && oldNote) {
             if (newNote.title) {
-                oldNote.setTitle(newNote.title);
+                oldNote.title = newNote.title;
+            }
+            if (newNote.createdAt) {
+                oldNote.createdAt = newNote.createdAt;
             }
             if (newNote.text) {
-                oldNote.setText(newNote.text);
+                oldNote.text = newNote.text;
             }
             if (newNote.priority) {
-                oldNote.setPriority(newNote.priority);
+                oldNote.priority = newNote.priority;
             }
             if (newNote.done !== undefined) {
-                oldNote.setDone(newNote.done);
+                oldNote.done = newNote.done;
             }
         }
         return oldNote;

@@ -5,27 +5,35 @@ import {noteService} from './noteService';
 export const home = (function (Handlebars) {
 
     return {
-        init: init
+        init: init,
+        updateView: updateView
     };
 
     function init() {
         registerButtonEvents();
+        updateView();
+    }
 
+    function updateView() {
         noteService.getNotes()
             .then(success, error);
 
         function success(data) {
-            var source = $('#home-template').html();
-            var template = Handlebars.compile(source);
-            registerHandlebarsHelper();
-            $('#home-main').append(template({notes: data}));
-            registerRadioEvents();
-            registerCheckboxEvents();
+            renderView(data);
         }
 
         function error(data) {
             alert(data);
         }
+    }
+
+    function renderView(data) {
+        var source = $('#home-template').html();
+        var template = Handlebars.compile(source);
+        registerHandlebarsHelper();
+        $('#home-content').html(template({notes: data}));
+        registerRadioEvents();
+        registerCheckboxEvents();
     }
 
     function registerHandlebarsHelper() {

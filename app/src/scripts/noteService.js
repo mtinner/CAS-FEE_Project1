@@ -5,12 +5,15 @@ let noteService = (function () {
     var noteAPI = '/notes';
 
     return {
+        //TODO enable if used
         //getNote: getNote,
         getNotes: getNotes,
         addNote: addNote,
         updateNote: updateNote
     };
 
+
+    //TODO enable if used
     /* function getNote(id) {
      id = parseInt(id);
      var apiLink = `${noteAPI}/${id}`;
@@ -38,6 +41,8 @@ let noteService = (function () {
     }
 
     function addNote(noteObj) {
+        var json = JSON.stringify(noteObj);
+        console.log(noteObj, json);
         return new Promise(function (resolve, reject) {
             $.ajax({
                     method: 'POST',
