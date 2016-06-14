@@ -11,10 +11,18 @@ export const home = (function () {
         $('#open-details').on('click', function () {
             openDetails();
         });
+        $('#style-switcher').on('click', function () {
+            toggleStyle();
+        });
     }
 
     function openDetails() {
         $('#home-container').hide();
         $('#details-container').show();
     }
+
+    function toggleStyle() {
+        $('#style-root').toggleClass('theme-dark');
+    }
+
 })();

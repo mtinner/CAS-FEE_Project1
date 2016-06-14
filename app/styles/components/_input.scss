@@ -19,3 +19,15 @@
     margin: 1em 0 0.4em 0;
   }
 }
+
+.theme-dark {
+  .input {
+    &:focus {
+      border-color: $darkgrey;
+    }
+
+    &__label {
+      color: $darkgrey;
+    }
+  }
+}

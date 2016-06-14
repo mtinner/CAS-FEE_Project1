@@ -15,3 +15,11 @@
     color: $blue;
   }
 }
+
+.theme-dark {
+  .form {
+    &__labeled .input:focus +.input__label {
+      color: black;
+    }
+  }
+}
