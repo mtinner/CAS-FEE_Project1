@@ -4,11 +4,11 @@
   justify-content: flex-end;
   margin-top: 0.2em;
 
-  &__radio {
+  .prio__radio {
     display: none;
   }
 
-  &__icon {
+  .prio__icon {
     @extend .fa;
     @extend .fa-bolt;
     @extend .fa-lg;
@@ -19,14 +19,14 @@
     cursor: pointer;
   }
 
-  &__radio:checked ~ .prio__icon {
+  .prio__radio:checked ~ .prio__icon {
     color: $lightblue;
   }
 
-  &__icon:hover,
-  &__icon:hover ~ .prio__icon,
-  &__radio:checked ~ .prio__icon:hover,
-  &__radio:checked ~ .prio__icon:hover ~ .prio__icon {
+  .prio__icon:hover,
+  .prio__icon:hover ~ .prio__icon,
+  .prio__radio:checked ~ .prio__icon:hover,
+  .prio__radio:checked ~ .prio__icon:hover ~ .prio__icon {
     color: $blue;
   }
 }
@@ -37,14 +37,14 @@
   }
 
   .prio {
-    &__radio:checked ~ .prio__icon {
+    .prio__radio:checked ~ .prio__icon {
       color: #696969;
     }
 
-    &__icon:hover,
-    &__icon:hover ~ .prio__icon,
-    &__radio:checked ~ .prio__icon:hover,
-    &__radio:checked ~ .prio__icon:hover ~ .prio__icon {
+    .prio__icon:hover,
+    .prio__icon:hover ~ .prio__icon,
+    .prio__radio:checked ~ .prio__icon:hover,
+    .prio__radio:checked ~ .prio__icon:hover ~ .prio__icon {
       color: black;
     }
   }
