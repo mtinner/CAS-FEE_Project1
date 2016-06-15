@@ -15,7 +15,6 @@
     // warnings
     "comma-dangle": 1,
     "no-unused-vars": 1,
-    "no-useless-rename": 1,
     "no-useless-constructor": 1,
     //errors
     "object-shorthand": [
