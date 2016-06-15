@@ -11,7 +11,7 @@ node server.js
 grunt default
 
 ## APP
-http://localhost:8080/app
+http://localhost:9000/app
 
 ## Inspiration
 ### SCSS
