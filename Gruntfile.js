@@ -36,7 +36,7 @@ module.exports = function (grunt) {
             main: {
                 expand: true,
                 cwd: './app',
-                src: './*.html',
+                src: ['./*.html', './*.png'],
                 dest: './dist/app',
                 filter: 'isFile'
             },
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
         browserify: {
             dist: {
                 options: {
-                    transform: [['babelify', { presets: ['es2015'] }]]
+                    transform: [['babelify', {presets: ['es2015']}]]
                 },
                 src: ['app/src/scripts/**/*.js'],
                 dest: 'dist/app/main.bundle.js'
