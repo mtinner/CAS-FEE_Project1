@@ -1,8 +1,9 @@
 import $ from 'jquery';
 import Handlebars from 'handlebars';
 import {noteService} from './noteService';
+import {main} from './main';
 
-export const home = (function (Handlebars) {
+export const home = (function () {
 
     return {
         init: init,
@@ -38,8 +39,9 @@ export const home = (function (Handlebars) {
 
     function registerButtonEvents() {
         $('#open-details').on('click', function () {
-            openDetails();
+            main.openDetails();
         });
+
         $('#style-switcher').on('click', function () {
             toggleStyle();
         });
@@ -55,7 +57,7 @@ export const home = (function (Handlebars) {
     }
 
     function registerCheckboxEvents() {
-        $('[id^="home__entry"]:checkbox').change(function (event) {
+        $('[id^="home-entry"]:checkbox').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
                 done: $(this).context.checked
             });
@@ -63,18 +65,23 @@ export const home = (function (Handlebars) {
     }
 
     function registerEditEvents() {
-        $('[id^="home-edit"]').on('click', function (event) {
-            console.log(event.target.value);
-        });
-    }
+        $('[id^="home-edit"]').on('click', function () {
+            noteService.getNote(parseInt($(this).attr('value')))
+                .then(success, error);
 
-    function openDetails() {
-        $('#home-container').hide();
-        $('#details-container').show();
+            function success(data) {
+                main.renderDetailsView(data);
+                main.openDetails();
+            }
+
+            function error(data) {
+                alert(data)
+            }
+        });
     }
 
     function toggleStyle() {
         $('#style-root').toggleClass('theme-dark');
     }
 
-})(Handlebars);
+})();

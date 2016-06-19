@@ -3,6 +3,33 @@ import Handlebars from 'handlebars';
 import {home} from './home';
 import {details} from './details';
 
+export const main = (function () {
+
+    return {
+        openHome: openHome,
+        updateHomeView: updateHomeView,
+        openDetails: openDetails,
+        renderDetailsView: renderDetailsView
+    };
+    function openHome() {
+        $('#details-container').hide();
+        $('#home-container').show();
+    }
+
+    function updateHomeView() {
+        home.updateView();
+    }
+
+    function openDetails() {
+        $('#home-container').hide();
+        $('#details-container').show();
+    }
+
+    function renderDetailsView(data) {
+        details.renderView(data)
+    }
+})();
+
 
 //after Page is loaded
 $(function () {
@@ -38,4 +65,3 @@ function registerHandlebarsHelper() {
         return isoString.slice(0, isoString.indexOf('T'));
     });
 }
-
