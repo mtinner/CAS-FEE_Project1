@@ -81,4 +81,8 @@ export const home = (function (Handlebars) {
         $('#details-container').show();
     }
 
+    function toggleStyle() {
+        $('#style-root').toggleClass('theme-dark');
+    }
+
 })(Handlebars);

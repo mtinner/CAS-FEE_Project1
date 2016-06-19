@@ -1,7 +1,9 @@
 <div id="home">
     <header class="header">
         <div class="row row--items-flex-end">
-            <div class="col-2"></div>
+            <a href="#" id="style-switcher">Switch Style</a>
+            <div class="col-2">
+            </div>
             <div class="check check--light">
 
                 <input id="home__show-finished" type="checkbox" class="check__checkbox">
@@ -20,45 +22,51 @@
 
                     <div class="row card card--header">
                         {{#if notes.length}}
-                        <label class="col-1">&darr; Date</label>
-                        <label class="col-3">Titel</label>
-                        <label class="col-4">Content</label>
-                        <label class="col-1">Priority</label>
-                        <label class="col-1">Done</label>
+                            <label class="col-1">&darr; Date</label>
+                            <label class="col-3">Titel</label>
+                            <label class="col-4">Content</label>
+                            <label class="col-1">Priority</label>
+                            <label class="col-1">Done</label>
                         {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
                     </div>
                     {{#notes}}
-                    <div class="row card">
-                        <label class="col-1">{{date createdAt}}</label>
-                        <label class="col-3">{{title}}</label>
-                        <div class="col-4">
-                            <div class="dropdown">
-                                <input class="dropdown__checkbox" id="dropdown-{{id}}" type="checkbox">
-                                <label class="dropdown__content" for="dropdown-{{id}}">
-                                    {{text}}
-                                </label>
+                        <div class="row card">
+                            <label class="col-1">{{date createdAt}}</label>
+                            <label class="col-3">{{title}}</label>
+                            <div class="col-4">
+                                <div class="dropdown">
+                                    <input class="dropdown__checkbox" id="dropdown-{{id}}"
+                                           type="checkbox">
+                                    <label class="dropdown__content" for="dropdown-{{id}}">
+                                        {{text}}
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        <label class="col-1 prio">
-                            <input class="prio__radio" id="home-prio3-{{id}}" type="radio" name="{{id}}" value="3"
-                                   {{#ifCond priority 3}}checked="checked" {{/ifCond}}>
-                            <label class="prio__icon" for="home-prio3-{{id}}"></label>
-                            <input class="prio__radio" id="home-prio2-{{id}}" type="radio" name="{{id}}" value="2"
-                                   {{#ifCond priority 2}}checked="checked" {{/ifCond}}>
-                            <label class="prio__icon" for="home-prio2-{{id}}"></label>
-                            <input class="prio__radio" id="home-prio1-{{id}}" type="radio" name="{{id}}" value="1"
-                                   {{#ifCond priority 1}}checked="checked" {{/ifCond}}>
-                            <label class="prio__icon" for="home-prio1-{{id}}"></label>
-                        </label>
+                            <label class="col-1 prio">
+                                <input class="prio__radio" id="home-prio3-{{id}}" type="radio"
+                                       name="{{id}}" value="3"
+                                    {{#ifCond priority 3}}checked="checked" {{/ifCond}}>
+                                <label class="prio__icon" for="home-prio3-{{id}}"></label>
+                                <input class="prio__radio" id="home-prio2-{{id}}" type="radio"
+                                       name="{{id}}" value="2"
+                                    {{#ifCond priority 2}}checked="checked" {{/ifCond}}>
+                                <label class="prio__icon" for="home-prio2-{{id}}"></label>
+                                <input class="prio__radio" id="home-prio1-{{id}}" type="radio"
+                                       name="{{id}}" value="1"
+                                    {{#ifCond priority 1}}checked="checked" {{/ifCond}}>
+                                <label class="prio__icon" for="home-prio1-{{id}}"></label>
+                            </label>
 
-                        <div class="col-1 checkbox">
-                            <div class="check">
-                                <input id="home__entry-{{id}}__check" type="checkbox"
-                                       class="check__checkbox" name="{{id}}" {{#if done}}checked="checked" {{/if}}>
-                                <label for="home__entry-{{id}}__check" class="check__icon"></label>
+                            <div class="col-1 checkbox">
+                                <div class="check">
+                                    <input id="home__entry-{{id}}__check" type="checkbox"
+                                           class="check__checkbox"
+                                           name="{{id}}" {{#if done}}checked="checked" {{/if}}>
+                                    <label for="home__entry-{{id}}__check"
+                                           class="check__icon"></label>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     {{/notes}}
                 </div>
             </div>

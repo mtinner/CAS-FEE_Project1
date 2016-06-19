@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 
-let noteService = (function () {
+const noteService = (function () {
     var noteAPI = '/notes';
 
     return {
