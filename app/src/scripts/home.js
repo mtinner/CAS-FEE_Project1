@@ -33,6 +33,7 @@ export const home = (function (Handlebars) {
         $('#home-content').html(template({notes: data}));
         registerRadioEvents();
         registerCheckboxEvents();
+        registerEditEvents();
     }
 
     function registerButtonEvents() {
@@ -58,6 +59,12 @@ export const home = (function (Handlebars) {
             noteService.updateNote(parseInt(event.target.name), {
                 done: $(this).context.checked
             });
+        });
+    }
+
+    function registerEditEvents() {
+        $('[id^="home-edit"]').on('click', function (event) {
+            console.log(event.target.value);
         });
     }
 
