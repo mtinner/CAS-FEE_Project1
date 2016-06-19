@@ -1,7 +1,7 @@
 <div id="details">
     <main>
-        <form id="details-form" class="form">
-            <script id="details-template" type="text/x-handlebars-template">
+        <script id="details-template" type="text/x-handlebars-template">
+            <form id="details-form" class="form">
                 <div class="col-12 form__labeled">
                     <input class="input" name="title" value="{{note.title}}">
                     <label class="input__label">Title</label>
@@ -41,12 +41,13 @@
                     </div>
                 </div>
 
-                <div class="col-12 form__btn-section">
-                    <button id="details-save" class="btn btn--form" name="save">Save</button>
-                    <button id="details-cancel" class="btn btn--form">Cancel</button>
-                </div>
-            </script>
-            <div id="details-content"></div>
-        </form>
+            </form>
+        </script>
+        <div id="details-content"></div>
+
+        <div class="col-12 form__btn-section">
+            <button id="details-save" class="btn btn--form">Save</button>
+            <button id="details-cancel" class="btn btn--form">Cancel</button>
+        </div>
     </main>
 </div>
