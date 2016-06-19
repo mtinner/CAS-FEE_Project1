@@ -19,6 +19,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: './node_modules/handlebars/dist',
+                        src: './handlebars.js',
+                        dest: './dist/tmp/vendor',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
                         cwd: './node_modules/font-awesome/fonts',
                         src: './*',
                         dest: './dist/fonts',
@@ -43,7 +50,7 @@ module.exports = function (grunt) {
             views: {
                 expand: true,
                 cwd: './app/src/views',
-                src: './*.html',
+                src: './*.hbs',
                 dest: './dist/app/views',
                 filter: 'isFile'
             }
@@ -53,7 +60,7 @@ module.exports = function (grunt) {
                 separator: ';\n'
             },
             dist: {
-                src: ['./dist/tmp/vendor/jquery.js'],
+                src: ['./dist/tmp/vendor/*.js'],
                 dest: './dist/app/vendor.concat.js'
             }
         },

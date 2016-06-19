@@ -1,33 +1,29 @@
 <div id="details">
     <main>
-        <div class="form">
+        <form id="detail-form" class="form">
             <div class="col-12 form__labeled">
-                <input class="input">
+                <input class="input" name="title">
                 <label class="input__label">Title</label>
             </div>
 
             <div class="col-12 form__labeled">
-                <textarea class="input"></textarea>
+                <textarea class="input" name="text"></textarea>
                 <label class="input__label">Description</label>
             </div>
 
             <div class="col-12 form__labeled">
-                <input class="input" type="date">
+                <input class="input" type="date" name="createdAt">
                 <label class="input__label">Finish Date</label>
             </div>
 
             <div class="col-12">
                 <label class="input__label">Priority</label>
                 <div class="prio">
-                    <input class="prio__radio" id="details-prio5" type="radio" name="prio">
-                    <label class="prio__icon" for="details-prio5"></label>
-                    <input class="prio__radio" id="details-prio4" type="radio" name="prio">
-                    <label class="prio__icon" for="details-prio4"></label>
-                    <input class="prio__radio" id="details-prio3" type="radio" name="prio">
+                    <input class="prio__radio" id="details-prio3" type="radio" name="prio" value="3">
                     <label class="prio__icon" for="details-prio3"></label>
-                    <input class="prio__radio" id="details-prio2" type="radio" name="prio">
+                    <input class="prio__radio" id="details-prio2" type="radio" name="prio" value="2">
                     <label class="prio__icon" for="details-prio2"></label>
-                    <input class="prio__radio" id="details-prio1" type="radio" name="prio" checked>
+                    <input class="prio__radio" id="details-prio1" type="radio" name="prio" value="1" checked>
                     <label class="prio__icon" for="details-prio1"></label>
                 </div>
             </div>
@@ -35,15 +31,15 @@
             <div class="col-12">
                 <label class="input__label">Done</label>
                 <div class="check">
-                    <input id="details-done" type="checkbox" class="check__checkbox">
+                    <input id="details-done" type="checkbox" class="check__checkbox" name="done">
                     <label for="details-done" class="check__icon"></label>
                 </div>
             </div>
 
             <div class="col-12 form__btn-section">
-                <button class="btn btn--form">Save</button>
+                <button id="details-save" class="btn btn--form">Save</button>
                 <button id="details-cancel" class="btn btn--form">Cancel</button>
             </div>
-        </div>
+        </form>
     </main>
 </div>
