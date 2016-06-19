@@ -1,8 +1,8 @@
 'use strict';
 
-var Note = function (id, createdAt, title, text, priority, done) {
+var Note = function (id, dueDate, title, text, priority, done) {
     this.id = id;
-    this.createdAt = createdAt;
+    this.dueDate = dueDate;
     this.title = title;
     this.text = text;
     this.priority = priority;

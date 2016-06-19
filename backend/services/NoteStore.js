@@ -47,7 +47,7 @@ var noteStore = (function () {
     function addNote(note) {
         var note = new Note(
             id++,
-            new Date(note.createdAt),
+            new Date(note.dueDate),
             note.title,
             note.text,
             note.priority,

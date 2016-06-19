@@ -20,7 +20,7 @@ export const details = (function () {
     function renderView(data) {
         existingNote = data;
         var note = data || {
-                createdAt: new Date(),
+                dueDate: new Date(),
                 priority: 1
             };
         var source = $('#details-template').html();
@@ -41,7 +41,7 @@ export const details = (function () {
                 newNote = {
                     title: form.find(obj => obj.name === 'title').value,
                     text: form.find(obj => obj.name === 'text').value,
-                    createdAt: isNaN(Date.parse(form.find(obj => obj.name === 'createdAt').value)) ? new Date() : new Date(form[2].value),
+                    dueDate: isNaN(Date.parse(form.find(obj => obj.name === 'dueDate').value)) ? new Date() : new Date(form[2].value),
                     priority: parseInt(form.find(obj => obj.name === 'priority').value),
                     done: !!form.find(obj => obj.name === 'done')
                 };

@@ -56,12 +56,12 @@ function registerHandlebarsHelper() {
         return options.inverse(this);
     });
 
-    Handlebars.registerHelper('toLocaleDateString', function (createdAt) {
-        return new Date(createdAt).toLocaleDateString();
+    Handlebars.registerHelper('toLocaleDateString', function (dueDate) {
+        return new Date(dueDate).toLocaleDateString();
     });
 
-    Handlebars.registerHelper('toShortISOString', function (createdAt) {
-        var isoString = new Date(createdAt).toISOString();
+    Handlebars.registerHelper('toShortISOString', function (dueDate) {
+        var isoString = new Date(dueDate).toISOString();
         return isoString.slice(0, isoString.indexOf('T'));
     });
 }
