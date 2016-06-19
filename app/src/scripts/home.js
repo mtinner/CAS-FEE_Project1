@@ -30,23 +30,9 @@ export const home = (function (Handlebars) {
     function renderView(data) {
         var source = $('#home-template').html();
         var template = Handlebars.compile(source);
-        registerHandlebarsHelper();
         $('#home-content').html(template({notes: data}));
         registerRadioEvents();
         registerCheckboxEvents();
-    }
-
-    function registerHandlebarsHelper() {
-        Handlebars.registerHelper('date', function (createdAt) {
-            return new Date(createdAt).toLocaleDateString();
-        });
-
-        Handlebars.registerHelper('ifCond', function (v1, v2, options) {
-            if (v1.toString() === v2.toString()) {
-                return options.fn(this);
-            }
-            return options.inverse(this);
-        });
     }
 
     function registerButtonEvents() {
@@ -69,7 +55,6 @@ export const home = (function (Handlebars) {
 
     function registerCheckboxEvents() {
         $('[id^="home__entry"]:checkbox').change(function (event) {
-            console.log($(this).context.checked);
             noteService.updateNote(parseInt(event.target.name), {
                 done: $(this).context.checked
             });

@@ -3,8 +3,7 @@
 var Note = require('./../models/Note');
 
 var noteStore = (function () {
-    var numberOfDummyNotes = 0,
-        notes = [],
+    var notes = [],
         dummyNotes = [],
         id = 0;
 
@@ -25,10 +24,11 @@ var noteStore = (function () {
             dummyNotes.push(
                 new Note(
                     id++,
+                    new Date(),
                     'title' + i,
                     i + ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                    '2',
-                    (i % 2) === 0
+                    (Math.floor(Math.random() * (3 - 1 + 1)) + 1).toString(),
+                    !(Math.floor(Math.random() * (1 - 0 + 1)) + 0)
                 ));
         }
     }
@@ -59,7 +59,9 @@ var noteStore = (function () {
 
     function updateNote(id, newNote) {
         var oldNote = getNote(id);
-        if (!newNote || !oldNote) { throw new Exception("new and old note expected"); }
+        if (!newNote || !oldNote) {
+            throw new Exception('new and old note expected');
+        }
         return Object.assign(oldNote, newNote);
     }
 

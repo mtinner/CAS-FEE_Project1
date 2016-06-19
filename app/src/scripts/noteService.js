@@ -41,8 +41,6 @@ const noteService = (function () {
     }
 
     function addNote(noteObj) {
-        var json = JSON.stringify(noteObj);
-        console.log(noteObj, json);
         return new Promise(function (resolve, reject) {
             $.ajax({
                     method: 'POST',

@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Handlebars from 'handlebars';
 import {noteService} from './noteService';
 import {home} from './home';
 
@@ -6,13 +7,24 @@ import {home} from './home';
 export const details = (function () {
 
     return {
-        init: init
+        init: init,
+        renderView: renderView
     };
 
     function init() {
-        registerButtonEvents();
+        renderView();
     }
 
+    function renderView(data) {
+        var note = data || {
+                createdAt: new Date(),
+                priority: '1'
+            };
+        var source = $('#details-template').html();
+        var template = Handlebars.compile(source);
+        $('#details-content').html(template({note: note}));
+        registerButtonEvents();
+    }
 
     function registerButtonEvents() {
         $('#details-cancel').on('click', function (event) {
@@ -22,22 +34,21 @@ export const details = (function () {
 
         $('#details-save').on('click', function (event) {
             event.preventDefault();
-            var form = $('#detail-form').serializeArray();
-            console.log(new Date(form[2].value));
+            var form = $('#details-form').serializeArray();
             noteService.addNote({
-                    title: form[0].value,
-                    text: form[1].value,
-                    createdAt: isNaN(Date.parse(form[2].value)) ? new Date() : new Date(form[2].value),
-                    priority: form[3].value,
-                    done: form.length === 5
+                    title: form.find(obj => obj.name === 'title').value,
+                    text: form.find(obj => obj.name === 'text').value,
+                    createdAt: isNaN(Date.parse(form.find(obj => obj.name === 'createdAt').value)) ? new Date() : new Date(form[2].value),
+                    priority: form.find(obj => obj.name === 'priority').value,
+                    done: !!form.find(obj => obj.name === 'done')
                 })
                 .then(success, error);
 
             function success(note) {
-                $('#detail-form')[0].reset();
+                $('#details-form')[0].reset();
                 home.updateView();
                 openHome();
-                alert(`Note with Title "${note.title}" created`);
+                alert(`Note with Title '${note.title}' created`);
             }
 
             function error() {
