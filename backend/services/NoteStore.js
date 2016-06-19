@@ -59,24 +59,8 @@ var noteStore = (function () {
 
     function updateNote(id, newNote) {
         var oldNote = getNote(id);
-        if (newNote && oldNote) {
-            if (newNote.title) {
-                oldNote.title = newNote.title;
-            }
-            if (newNote.createdAt) {
-                oldNote.createdAt = newNote.createdAt;
-            }
-            if (newNote.text) {
-                oldNote.text = newNote.text;
-            }
-            if (newNote.priority) {
-                oldNote.priority = newNote.priority;
-            }
-            if (newNote.done !== undefined) {
-                oldNote.done = newNote.done;
-            }
-        }
-        return oldNote;
+        if (!newNote || !oldNote) { throw new Exception("new and old note expected"); }
+        return Object.assign(oldNote, newNote);
     }
 
 })();
