@@ -50,7 +50,7 @@ module.exports = function (grunt) {
             views: {
                 expand: true,
                 cwd: './app/src/views',
-                src: './*.html',
+                src: './*.hbs',
                 dest: './dist/app/views',
                 filter: 'isFile'
             }

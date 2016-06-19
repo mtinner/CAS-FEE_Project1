@@ -10,10 +10,10 @@ $(function () {
 
     detailsContainer.hide();
 
-    homeContainer.load('/dist/app/views/home.html', function () {
+    homeContainer.load('/dist/app/views/home.hbs', function () {
         home.init();
     });
-    detailsContainer.load('/dist/app/views/details.html', function () {
+    detailsContainer.load('/dist/app/views/details.hbs', function () {
         details.init();
     });
 });
