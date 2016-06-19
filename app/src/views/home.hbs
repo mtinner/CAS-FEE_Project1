@@ -23,16 +23,17 @@
                     <div class="row card card--header">
                         {{#if notes.length}}
                             <label class="col-1">&darr; Date</label>
-                            <label class="col-3">Titel</label>
+                            <label class="col-2">Titel</label>
                             <label class="col-4">Content</label>
                             <label class="col-1">Priority</label>
                             <label class="col-1">Done</label>
+                            <label class="col-1">Edit</label>
                         {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
                     </div>
                     {{#notes}}
                         <div class="row card">
                             <label class="col-1">{{toLocaleDateString createdAt}}</label>
-                            <label class="col-3">{{title}}</label>
+                            <label class="col-2">{{title}}</label>
                             <div class="col-4">
                                 <div class="dropdown">
                                     <input class="dropdown__checkbox" id="dropdown-{{id}}"
@@ -66,6 +67,8 @@
                                            class="check__icon"></label>
                                 </div>
                             </div>
+                            <i id="edit-{{id}}"
+                               class="col-1 icon fa fa-edit"></i>
                         </div>
                     {{/notes}}
                 </div>
