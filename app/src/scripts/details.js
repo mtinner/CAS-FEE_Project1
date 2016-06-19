@@ -21,7 +21,7 @@ export const details = (function () {
         existingNote = data;
         var note = data || {
                 createdAt: new Date(),
-                priority: '1'
+                priority: 1
             };
         var source = $('#details-template').html();
         var template = Handlebars.compile(source);
@@ -42,7 +42,7 @@ export const details = (function () {
                     title: form.find(obj => obj.name === 'title').value,
                     text: form.find(obj => obj.name === 'text').value,
                     createdAt: isNaN(Date.parse(form.find(obj => obj.name === 'createdAt').value)) ? new Date() : new Date(form[2].value),
-                    priority: form.find(obj => obj.name === 'priority').value,
+                    priority: parseInt(form.find(obj => obj.name === 'priority').value),
                     done: !!form.find(obj => obj.name === 'done')
                 };
             if (existingNote) {

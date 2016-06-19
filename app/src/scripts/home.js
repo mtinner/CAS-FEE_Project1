@@ -51,7 +51,7 @@ export const home = (function () {
     function registerRadioEvents() {
         $('[id^="home-prio"]:radio').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
-                priority: event.target.value
+                priority: parseInt(event.target.value)
             });
         });
     }
