@@ -5,8 +5,7 @@ var db = new Datastore({filename: './data/notes.db', autoload: true});
 var Note = require('./../models/Note');
 
 var noteStore = (function () {
-    var notes = [],
-        dummyNotes = [],
+    var dummyNotes = [],
         id = 0;
 
     return {
@@ -50,7 +49,7 @@ var noteStore = (function () {
 
     function addNote(note, callback) {
         var note = new Note(
-            id++,
+            ++id,
             new Date(note.dueDate),
             note.title,
             note.text,
@@ -70,7 +69,7 @@ var noteStore = (function () {
                 throw 'new and old note expected';
             }
             var updateNote = Object.assign(oldNote, newNote);
-            db.update({_id: 'gaBLZvxATOYs226Y'}, {
+            db.update({_id: oldNote._id}, {
                 $set: {
                     dueDate: updateNote.dueDate,
                     title: updateNote.title,
