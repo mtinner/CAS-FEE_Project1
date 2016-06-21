@@ -1,4 +1,6 @@
 'use strict';
+var Datastore = require('nedb');
+var db = new Datastore({filename: './data/notes.db', autoload: true});
 
 var Note = require('./../models/Note');
 
@@ -33,18 +35,20 @@ var noteStore = (function () {
         }
     }
 
-    function getNote(id) {
+    function getNote(id, callback) {
         id = parseInt(id);
-        return notes.concat(dummyNotes).find(function (note) {
-            return note.id === id;
-        })
+        db.findOne({_id: id}, function (err, doc) {
+            callback(err, doc);
+        });
     }
 
-    function getNotes() {
-        return notes.concat(dummyNotes);
+    function getNotes(callback) {
+        db.find({}, function (err, docs) {
+            callback(err, docs);
+        });
     }
 
-    function addNote(note) {
+    function addNote(note, callback) {
         var note = new Note(
             id++,
             new Date(note.dueDate),
@@ -53,8 +57,11 @@ var noteStore = (function () {
             note.priority,
             note.done
         );
-        notes.push(note);
-        return note;
+        db.insert(note, function (err, newDoc) {
+            if (callback) {
+                callback(err, newDoc);
+            }
+        });
     }
 
     function updateNote(id, newNote) {

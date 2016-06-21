@@ -6,11 +6,15 @@ var router = express.Router();
 var NoteStore = require('./../services/NoteStore');
 
 router.get('/', function (req, res) {
-    res.status(200).send(NoteStore.getNotes());
+    NoteStore.getNotes(function(error, notes){
+        res.status(200).send(notes)
+    });
 });
 
 router.post('/', function (req, res) {
-    res.status(201).send(NoteStore.addNote(req.body));
+    NoteStore.addNote(req.body, function(err, note) {
+        res.status(201).send(note);
+    });
 });
 
 router.put('/:id', function (req, res) {
@@ -18,7 +22,9 @@ router.put('/:id', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
-    res.status(200).send(NoteStore.getNote(req.params.id));
+    NoteStore.getNote(req.params.id, function(err, note){
+        res.status(200).send(note);
+    });
 });
 
 router.post('/dummynotes/:number', function (req, res) {
