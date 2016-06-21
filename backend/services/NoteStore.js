@@ -37,7 +37,7 @@ var noteStore = (function () {
 
     function getNote(id, callback) {
         id = parseInt(id);
-        db.findOne({_id: id}, function (err, doc) {
+        db.findOne({id: id}, function (err, doc) {
             callback(err, doc);
         });
     }
@@ -64,12 +64,26 @@ var noteStore = (function () {
         });
     }
 
-    function updateNote(id, newNote) {
-        var oldNote = getNote(id);
-        if (!newNote || !oldNote) {
-            throw new Exception('new and old note expected');
-        }
-        return Object.assign(oldNote, newNote);
+    function updateNote(id, newNote, callback) {
+        getNote(id, function (err, oldNote) {
+            if (!newNote || !oldNote) {
+                throw 'new and old note expected';
+            }
+            var updateNote = Object.assign(oldNote, newNote);
+            db.update({_id: 'gaBLZvxATOYs226Y'}, {
+                $set: {
+                    dueDate: updateNote.dueDate,
+                    title: updateNote.title,
+                    text: updateNote.text,
+                    priority: updateNote.priority,
+                    done: updateNote.done
+                }
+            }, {}, function (err, doc) {
+                if (callback) {
+                    callback(err, updateNote);
+                }
+            });
+        });
     }
 
 })();
