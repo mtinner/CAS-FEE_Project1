@@ -1,45 +1,53 @@
 <div id="details">
     <main>
-        <form id="detail-form" class="form">
-            <div class="col-12 form__labeled">
-                <input class="input" name="title">
-                <label class="input__label">Title</label>
-            </div>
-
-            <div class="col-12 form__labeled">
-                <textarea class="input" name="text"></textarea>
-                <label class="input__label">Description</label>
-            </div>
-
-            <div class="col-12 form__labeled">
-                <input class="input" type="date" name="createdAt">
-                <label class="input__label">Finish Date</label>
-            </div>
-
-            <div class="col-12">
-                <label class="input__label">Priority</label>
-                <div class="prio">
-                    <input class="prio__radio" id="details-prio3" type="radio" name="prio" value="3">
-                    <label class="prio__icon" for="details-prio3"></label>
-                    <input class="prio__radio" id="details-prio2" type="radio" name="prio" value="2">
-                    <label class="prio__icon" for="details-prio2"></label>
-                    <input class="prio__radio" id="details-prio1" type="radio" name="prio" value="1" checked>
-                    <label class="prio__icon" for="details-prio1"></label>
+        <script id="details-template" type="text/x-handlebars-template">
+            <form id="details-form" class="form">
+                <div class="col-12 form__labeled">
+                    <input class="input" name="title" value="{{note.title}}">
+                    <label class="input__label">Title</label>
                 </div>
-            </div>
 
-            <div class="col-12">
-                <label class="input__label">Done</label>
-                <div class="check">
-                    <input id="details-done" type="checkbox" class="check__checkbox" name="done">
-                    <label for="details-done" class="check__icon"></label>
+                <div class="col-12 form__labeled">
+                    <textarea class="input" name="text">{{note.text}}</textarea>
+                    <label class="input__label">Description</label>
                 </div>
-            </div>
 
-            <div class="col-12 form__btn-section">
-                <button id="details-save" class="btn btn--form">Save</button>
-                <button id="details-cancel" class="btn btn--form">Cancel</button>
-            </div>
-        </form>
+                <div class="col-12 form__labeled">
+                    <input class="input" type="date" name="dueDate" value="{{toShortISOString note.dueDate}}">
+                    <label class="input__label">Finish Date</label>
+                </div>
+
+                <div class="col-12">
+                    <label class="input__label">Priority</label>
+                    <div class="prio">
+                        <input class="prio__radio" id="details-prio3" type="radio" name="priority" value="3"
+                            {{#ifCond note.priority 3}}checked="checked" {{/ifCond}}>
+                        <label class="prio__icon" for="details-prio3"></label>
+                        <input class="prio__radio" id="details-prio2" type="radio" name="priority" value="2"
+                            {{#ifCond note.priority 2}}checked="checked" {{/ifCond}}>
+                        <label class="prio__icon" for="details-prio2"></label>
+                        <input class="prio__radio" id="details-prio1" type="radio" name="priority" value="1"
+                            {{#ifCond note.priority 1}}checked="checked" {{/ifCond}}>
+                        <label class="prio__icon" for="details-prio1"></label>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label class="input__label">Done</label>
+                    <div class="check">
+                        <input id="details-done" type="checkbox" class="check__checkbox" name="done"
+                            {{#if note.done}}checked="checked" {{/if}}>
+                        <label for="details-done" class="check__icon"></label>
+                    </div>
+                </div>
+
+            </form>
+        </script>
+        <div id="details-content"></div>
+
+        <div class="col-12 form__btn-section">
+            <button id="details-save" class="btn btn--form">Save</button>
+            <button id="details-cancel" class="btn btn--form">Cancel</button>
+        </div>
     </main>
 </div>

@@ -1,8 +1,9 @@
 import $ from 'jquery';
 import Handlebars from 'handlebars';
 import {noteService} from './noteService';
+import {main} from './main';
 
-export const home = (function (Handlebars) {
+export const home = (function () {
 
     return {
         init: init,
@@ -30,29 +31,17 @@ export const home = (function (Handlebars) {
     function renderView(data) {
         var source = $('#home-template').html();
         var template = Handlebars.compile(source);
-        registerHandlebarsHelper();
         $('#home-content').html(template({notes: data}));
         registerRadioEvents();
         registerCheckboxEvents();
-    }
-
-    function registerHandlebarsHelper() {
-        Handlebars.registerHelper('date', function (createdAt) {
-            return new Date(createdAt).toLocaleDateString();
-        });
-
-        Handlebars.registerHelper('ifCond', function (v1, v2, options) {
-            if (v1.toString() === v2.toString()) {
-                return options.fn(this);
-            }
-            return options.inverse(this);
-        });
+        registerEditEvents();
     }
 
     function registerButtonEvents() {
         $('#open-details').on('click', function () {
-            openDetails();
+            main.openDetails();
         });
+
         $('#style-switcher').on('click', function () {
             toggleStyle();
         });
@@ -62,27 +51,37 @@ export const home = (function (Handlebars) {
     function registerRadioEvents() {
         $('[id^="home-prio"]:radio').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
-                priority: event.target.value
+                priority: parseInt(event.target.value)
             });
         });
     }
 
     function registerCheckboxEvents() {
-        $('[id^="home__entry"]:checkbox').change(function (event) {
-            console.log($(this).context.checked);
+        $('[id^="home-entry"]:checkbox').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
                 done: $(this).context.checked
             });
         });
     }
 
-    function openDetails() {
-        $('#home-container').hide();
-        $('#details-container').show();
+    function registerEditEvents() {
+        $('[id^="home-edit"]').on('click', function () {
+            noteService.getNote(parseInt($(this).attr('value')))
+                .then(success, error);
+
+            function success(data) {
+                main.renderDetailsView(data);
+                main.openDetails();
+            }
+
+            function error(data) {
+                alert(data)
+            }
+        });
     }
 
     function toggleStyle() {
         $('#style-root').toggleClass('theme-dark');
     }
 
-})(Handlebars);
+})();

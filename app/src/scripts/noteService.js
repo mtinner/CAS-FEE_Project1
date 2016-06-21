@@ -5,28 +5,26 @@ const noteService = (function () {
     var noteAPI = '/notes';
 
     return {
-        //TODO enable if used
-        //getNote: getNote,
+        getNote: getNote,
         getNotes: getNotes,
         addNote: addNote,
         updateNote: updateNote
     };
 
 
-    //TODO enable if used
-    /* function getNote(id) {
-     id = parseInt(id);
-     var apiLink = `${noteAPI}/${id}`;
-     return new Promise(function (resolve, reject) {
-     $.getJSON(apiLink, {})
-     .done(function (data) {
-     resolve(data);
-     })
-     .fail(function () {
-     reject('Failed to get Note');
-     });
-     });
-     }*/
+    function getNote(id) {
+        id = parseInt(id);
+        var apiLink = `${noteAPI}/${id}`;
+        return new Promise(function (resolve, reject) {
+            $.getJSON(apiLink, {})
+                .done(function (data) {
+                    resolve(data);
+                })
+                .fail(function () {
+                    reject('Failed to get Note');
+                });
+        });
+    }
 
     function getNotes() {
         return new Promise(function (resolve, reject) {
@@ -41,8 +39,6 @@ const noteService = (function () {
     }
 
     function addNote(noteObj) {
-        var json = JSON.stringify(noteObj);
-        console.log(noteObj, json);
         return new Promise(function (resolve, reject) {
             $.ajax({
                     method: 'POST',

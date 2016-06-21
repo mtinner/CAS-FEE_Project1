@@ -6,9 +6,9 @@
             </div>
             <div class="check check--light">
 
-                <input id="home__show-finished" type="checkbox" class="check__checkbox">
-                <label for="home__show-finished" class="check__icon"></label>
-                <label for="home__show-finished" class="col-2 check__label">Show finished</label>
+                <input id="home-show-finished" type="checkbox" class="check__checkbox">
+                <label for="home-show-finished" class="check__icon"></label>
+                <label for="home-show-finished" class="col-2 check__label">Show finished</label>
             </div>
             <button id="open-details"
                     class="col-4 btn btn--round btn--header btn--alert fa fa-plus"></button>
@@ -23,16 +23,17 @@
                     <div class="row card card--header">
                         {{#if notes.length}}
                             <label class="col-1">&darr; Date</label>
-                            <label class="col-3">Titel</label>
+                            <label class="col-2">Titel</label>
                             <label class="col-4">Content</label>
                             <label class="col-1">Priority</label>
                             <label class="col-1">Done</label>
+                            <label class="col-1">Edit</label>
                         {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
                     </div>
                     {{#notes}}
                         <div class="row card">
-                            <label class="col-1">{{date createdAt}}</label>
-                            <label class="col-3">{{title}}</label>
+                            <label class="col-1">{{toLocaleDateString dueDate}}</label>
+                            <label class="col-2">{{title}}</label>
                             <div class="col-4">
                                 <div class="dropdown">
                                     <input class="dropdown__checkbox" id="dropdown-{{id}}"
@@ -59,13 +60,15 @@
 
                             <div class="col-1 checkbox">
                                 <div class="check">
-                                    <input id="home__entry-{{id}}__check" type="checkbox"
+                                    <input id="home-entry-{{id}}__check" type="checkbox"
                                            class="check__checkbox"
                                            name="{{id}}" {{#if done}}checked="checked" {{/if}}>
-                                    <label for="home__entry-{{id}}__check"
+                                    <label for="home-entry-{{id}}__check"
                                            class="check__icon"></label>
                                 </div>
                             </div>
+                            <label id="home-edit-{{id}}"
+                                   class="col-1 icon fa fa-edit" name="{{id}}" value="{{id}}"></label>
                         </div>
                     {{/notes}}
                 </div>
