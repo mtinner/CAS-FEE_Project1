@@ -5,6 +5,7 @@ import {noteService} from './noteService';
 export const home = (function home(Handlebars) {
 
     let sortAsc = true;
+    let sortAttribute;
 
     return {
         init: init,
@@ -32,7 +33,13 @@ export const home = (function home(Handlebars) {
         var source = $('#home-template').html();
         var template = Handlebars.compile(source);
         registerHandlebarsHelper();
-        $('#home-content').html(template({notes: data}));
+        $('#home-content').html(template({
+            notes: data,
+            sort: {
+                asc: sortAsc,
+                attribute: sortAttribute
+            }
+        }));
         registerRadioEvents();
         registerCheckboxEvents();
         registerTableEvents();
@@ -40,33 +47,43 @@ export const home = (function home(Handlebars) {
 
     function registerTableEvents() {
         $('#home-header-date').on('click', function () {
-            updateView(createSorter('createdAt'));
+            const attribute = 'createdAt';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
             sortAsc = !sortAsc;
         });
 
         $('#home-header-title').on('click', function () {
-            updateView(createSorter('title'));
+            const attribute = 'title';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
             sortAsc = !sortAsc;
         });
 
         $('#home-header-content').on('click', function () {
-            updateView(createSorter('text'));
+            const attribute = 'text';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
             sortAsc = !sortAsc;
         });
 
         $('#home-header-prio').on('click', function () {
-            updateView(createSorter('priority'));
+            const attribute = 'priority';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
             sortAsc = !sortAsc;
         });
 
         $('#home-header-done').on('click', function () {
-            updateView(createSorter('done'));
+            const attribute = 'done';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
             sortAsc = !sortAsc;
         });
     }
 
     function createSorter(attribute) {
-        return (a, b) => sortAsc 
+        return (a, b) => sortAsc
             ? a[attribute] < b[attribute]
             : a[attribute] > b[attribute]
     }
@@ -78,6 +95,13 @@ export const home = (function home(Handlebars) {
 
         Handlebars.registerHelper('ifCond', function (v1, v2, options) {
             if (v1.toString() === v2.toString()) {
+                return options.fn(this);
+            }
+            return options.inverse(this);
+        });
+
+        Handlebars.registerHelper('ifSort', function (s1, s2, options) {
+            if (s1 === s2) {
                 return options.fn(this);
             }
             return options.inverse(this);

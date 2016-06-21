@@ -22,11 +22,21 @@
 
                     <div class="row card card--header">
                         {{#if notes.length}}
-                            <label id="home-header-date" class="col-1">&darr; Date</label>
-                            <label id="home-header-title" class="col-3">Titel</label>
-                            <label id="home-header-content" class="col-4">Content</label>
-                            <label id="home-header-prio" class="col-1">Priority</label>
-                            <label id="home-header-done" class="col-1">Done</label>
+                            <label id="home-header-date" class="col-1 table-header">
+                                {{#ifSort sort.attribute 'createdAt'}}
+                                    {{#if sort.asc}}
+                                        &uarr;
+                                    {{else}}
+                                        &darr;
+                                    {{/if}}
+                                {{/ifSort}}
+                                Date
+                            </label>
+                            <label id="home-header-title" class="col-3 table-header">Titel</label>
+                            <label id="home-header-content"
+                                   class="col-4 table-header">Content</label>
+                            <label id="home-header-prio" class="col-1 table-header">Priority</label>
+                            <label id="home-header-done" class="col-1 table-header">Done</label>
                         {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
                     </div>
                     {{#notes}}

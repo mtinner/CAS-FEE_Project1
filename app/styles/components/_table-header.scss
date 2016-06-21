@@ -1,0 +1,7 @@
+.table-header {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
