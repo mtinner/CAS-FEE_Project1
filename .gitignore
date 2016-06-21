@@ -39,3 +39,4 @@ dist
 *vendor.js
 main.css
 app/bundle.js
+data/notes.db
