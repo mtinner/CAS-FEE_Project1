@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Handlebars from 'handlebars';
 import {noteService} from './noteService';
 
-export const home = (function (Handlebars) {
+export const home = (function home(Handlebars) {
 
     let sortAsc = true;
 
@@ -39,14 +39,36 @@ export const home = (function (Handlebars) {
     }
 
     function registerTableEvents() {
+        $('#home-header-date').on('click', function () {
+            updateView(createSorter('createdAt'));
+            sortAsc = !sortAsc;
+        });
+
         $('#home-header-title').on('click', function () {
             updateView(createSorter('title'));
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-content').on('click', function () {
+            updateView(createSorter('text'));
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-prio').on('click', function () {
+            updateView(createSorter('priority'));
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-done').on('click', function () {
+            updateView(createSorter('done'));
             sortAsc = !sortAsc;
         });
     }
 
     function createSorter(attribute) {
-        return (a, b) => sortAsc ? a[attribute] < b[attribute] : a[attribute] > b[attribute]
+        return (a, b) => sortAsc 
+            ? a[attribute] < b[attribute]
+            : a[attribute] > b[attribute]
     }
 
     function registerHandlebarsHelper() {
