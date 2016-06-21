@@ -5,7 +5,7 @@ import {noteService} from './noteService';
 export const home = (function home(Handlebars) {
 
     let sortAsc = false;
-    let sortAttribute = 'createdAt';
+    let sortAttribute = '';
 
     return {
         init: init,
