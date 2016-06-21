@@ -4,8 +4,8 @@ import {noteService} from './noteService';
 
 export const home = (function home(Handlebars) {
 
-    let sortAsc = true;
-    let sortAttribute;
+    let sortAsc = false;
+    let sortAttribute = 'createdAt';
 
     return {
         init: init,
@@ -76,16 +76,16 @@ export const home = (function home(Handlebars) {
 
         $('#home-header-done').on('click', function () {
             const attribute = 'done';
-            updateView(createSorter(attribute));
             sortAttribute = attribute;
             sortAsc = !sortAsc;
+            updateView(createSorter(attribute));
         });
     }
 
     function createSorter(attribute) {
         return (a, b) => sortAsc
-            ? a[attribute] < b[attribute]
-            : a[attribute] > b[attribute]
+            ? a[attribute] > b[attribute]
+            : a[attribute] < b[attribute]
     }
 
     function registerHandlebarsHelper() {

@@ -25,18 +25,53 @@
                             <label id="home-header-date" class="col-1 table-header">
                                 {{#ifSort sort.attribute 'createdAt'}}
                                     {{#if sort.asc}}
-                                        &uarr;
+                                    <span class="fa fa-angle-up"></span>
                                     {{else}}
-                                        &darr;
+                                    <span class="fa fa-angle-down"></span>
                                     {{/if}}
                                 {{/ifSort}}
                                 Date
                             </label>
-                            <label id="home-header-title" class="col-3 table-header">Titel</label>
-                            <label id="home-header-content"
-                                   class="col-4 table-header">Content</label>
-                            <label id="home-header-prio" class="col-1 table-header">Priority</label>
-                            <label id="home-header-done" class="col-1 table-header">Done</label>
+                            <label id="home-header-title" class="col-3 table-header">
+                                {{#ifSort sort.attribute 'title'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                                Titel
+                            </label>
+                            <label id="home-header-content" class="col-4 table-header">
+                                {{#ifSort sort.attribute 'text'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                                Content
+                            </label>
+                            <label id="home-header-prio" class="col-1 table-header">
+                                {{#ifSort sort.attribute 'priority'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                                Priority
+                            </label>
+                            <label id="home-header-done" class="col-1 table-header">
+                                {{#ifSort sort.attribute 'done'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                                Done
+                            </label>
                         {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
                     </div>
                     {{#notes}}
