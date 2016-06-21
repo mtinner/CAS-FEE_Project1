@@ -4,6 +4,8 @@ import {noteService} from './noteService';
 
 export const home = (function (Handlebars) {
 
+    let sortAsc = true;
+
     return {
         init: init,
         updateView: updateView
@@ -14,12 +16,11 @@ export const home = (function (Handlebars) {
         updateView();
     }
 
-    function updateView() {
-        noteService.getNotes()
-            .then(success, error);
+    function updateView(sorter = data => data) {
+        noteService.getNotes().then(success, error);
 
         function success(data) {
-            renderView(data);
+            renderView(data.sort(sorter));
         }
 
         function error(data) {
@@ -34,6 +35,18 @@ export const home = (function (Handlebars) {
         $('#home-content').html(template({notes: data}));
         registerRadioEvents();
         registerCheckboxEvents();
+        registerTableEvents();
+    }
+
+    function registerTableEvents() {
+        $('#home-header-title').on('click', function () {
+            updateView(createSorter('title'));
+            sortAsc = !sortAsc;
+        });
+    }
+
+    function createSorter(attribute) {
+        return (a, b) => sortAsc ? a[attribute] < b[attribute] : a[attribute] > b[attribute]
     }
 
     function registerHandlebarsHelper() {
