@@ -22,11 +22,56 @@
 
                     <div class="row card card--header">
                         {{#if notes.length}}
-                            <label class="col-1">&darr; Date</label>
-                            <label class="col-2">Titel</label>
-                            <label class="col-4">Content</label>
-                            <label class="col-1">Priority</label>
-                            <label class="col-1">Done</label>
+                            <label class="col-1">
+                                <span id="home-header-date" class="table-header">Date</span>
+                                {{#ifSort sort.attribute 'createdAt'}}
+                                    {{#if sort.asc}}
+                                    <span class="fa fa-angle-up fa-lg"></span>
+                                    {{else}}
+                                    <span class="fa fa-angle-down fa-lg"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                            </label>
+                            <label class="col-2">
+                                <span id="home-header-title" class="table-header">Title</span>
+                                {{#ifSort sort.attribute 'title'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up fa-lg"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down fa-lg"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                            </label>
+                            <label class="col-4">
+                                <span id="home-header-content" class="table-header">Content</span>
+                                {{#ifSort sort.attribute 'text'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up fa-lg"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down fa-lg"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                            </label>
+                            <label class="col-1">
+                                <span id="home-header-prio" class="table-header">Priority</span>
+                                {{#ifSort sort.attribute 'priority'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up fa-lg"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down fa-lg"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                            </label>
+                            <label class="col-1">
+                                <span id="home-header-done" class="table-header">Done</span>
+                                {{#ifSort sort.attribute 'done'}}
+                                    {{#if sort.asc}}
+                                        <span class="fa fa-angle-up fa-lg"></span>
+                                    {{else}}
+                                        <span class="fa fa-angle-down fa-lg"></span>
+                                    {{/if}}
+                                {{/ifSort}}
+                            </label>
                             <label class="col-1">Edit</label>
                         {{else}}<h1>Keine Notizen vorhanden</h1>{{/if}}
                     </div>

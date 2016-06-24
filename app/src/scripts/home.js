@@ -3,7 +3,10 @@ import Handlebars from 'handlebars';
 import {noteService} from './noteService';
 import {main} from './main';
 
-export const home = (function () {
+export const home = (function home() {
+
+    let sortAsc = false;
+    let sortAttribute = '';
 
     return {
         init: init,
@@ -15,12 +18,11 @@ export const home = (function () {
         updateView();
     }
 
-    function updateView() {
-        noteService.getNotes()
-            .then(success, error);
+    function updateView(sorter = data => data) {
+        noteService.getNotes().then(success, error);
 
         function success(data) {
-            renderView(data);
+            renderView(data.sort(sorter));
         }
 
         function error(data) {
@@ -31,10 +33,81 @@ export const home = (function () {
     function renderView(data) {
         var source = $('#home-template').html();
         var template = Handlebars.compile(source);
-        $('#home-content').html(template({notes: data}));
+        registerHandlebarsHelper();
+        $('#home-content').html(template({
+            notes: data,
+            sort: {
+                asc: sortAsc,
+                attribute: sortAttribute
+            }
+        }));
         registerRadioEvents();
         registerCheckboxEvents();
         registerEditEvents();
+        registerTableEvents();
+    }
+
+    function registerTableEvents() {
+        $('#home-header-date').on('click', function () {
+            const attribute = 'createdAt';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-title').on('click', function () {
+            const attribute = 'title';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-content').on('click', function () {
+            const attribute = 'text';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-prio').on('click', function () {
+            const attribute = 'priority';
+            updateView(createSorter(attribute));
+            sortAttribute = attribute;
+            sortAsc = !sortAsc;
+        });
+
+        $('#home-header-done').on('click', function () {
+            const attribute = 'done';
+            sortAttribute = attribute;
+            sortAsc = !sortAsc;
+            updateView(createSorter(attribute));
+        });
+    }
+
+    function createSorter(attribute) {
+        return (a, b) => sortAsc
+            ? a[attribute] > b[attribute]
+            : a[attribute] < b[attribute]
+    }
+
+    function registerHandlebarsHelper() {
+        Handlebars.registerHelper('date', function (createdAt) {
+            return new Date(createdAt).toLocaleDateString();
+        });
+
+        Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+            if (v1.toString() === v2.toString()) {
+                return options.fn(this);
+            }
+            return options.inverse(this);
+        });
+
+        Handlebars.registerHelper('ifSort', function (s1, s2, options) {
+            if (s1 === s2) {
+                return options.fn(this);
+            }
+            return options.inverse(this);
+        });
     }
 
     function registerButtonEvents() {
