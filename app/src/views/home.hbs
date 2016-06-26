@@ -26,9 +26,9 @@
                                 <span id="home-header-date" class="table-header">Date</span>
                                 {{#ifSort sort.attribute 'dueDate'}}
                                     {{#if sort.asc}}
-                                    <span class="fa fa-angle-up fa-lg"></span>
+                                        <span class="fa fa-angle-up fa-lg"></span>
                                     {{else}}
-                                    <span class="fa fa-angle-down fa-lg"></span>
+                                        <span class="fa fa-angle-down fa-lg"></span>
                                     {{/if}}
                                 {{/ifSort}}
                             </label>
@@ -80,13 +80,15 @@
                             <label class="col-1">{{toLocaleDateString dueDate}}</label>
                             <label class="col-2">{{title}}</label>
                             <div class="col-4">
-                                <div class="dropdown">
-                                    <input class="dropdown__checkbox" id="dropdown-{{id}}"
-                                           type="checkbox">
-                                    <label class="dropdown__content" for="dropdown-{{id}}">
-                                        {{text}}
-                                    </label>
-                                </div>
+                                {{#if text}}
+                                    <div class="dropdown">
+                                        <input class="dropdown__checkbox" id="dropdown-{{id}}"
+                                               type="checkbox">
+                                        <label class="dropdown__content" for="dropdown-{{id}}">
+                                            {{text}}
+                                        </label>
+                                    </div>
+                                {{/if}}
                             </div>
                             <label class="col-1 prio">
                                 <input class="prio__radio" id="home-prio3-{{id}}" type="radio"
@@ -113,7 +115,8 @@
                                 </div>
                             </div>
                             <label id="home-edit-{{id}}"
-                                   class="col-1 icon fa fa-edit" name="{{id}}" value="{{id}}"></label>
+                                   class="col-1 icon fa fa-edit" name="{{id}}"
+                                   value="{{id}}"></label>
                         </div>
                     {{/notes}}
                 </div>
