@@ -5,8 +5,9 @@
             <div class="col-2">
             </div>
             <div class="check check--light">
-
-                <input id="home-show-finished" type="checkbox" class="check__checkbox">
+                <input id="home-show-finished" type="checkbox" class="check__checkbox"
+                       {{#if showFinished}}checked="checked"{{/if}}
+                >
                 <label for="home-show-finished" class="check__icon"></label>
                 <label for="home-show-finished" class="col-2 check__label">Show finished</label>
             </div>

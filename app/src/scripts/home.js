@@ -4,9 +4,14 @@ import {noteService} from './noteService';
 import {main} from './main';
 
 export const home = (function home() {
-
+    let localData = [];
     let sortAsc = false;
     let sortAttribute = '';
+    let showFinished = false;
+
+    const sorter = (a, b) => sortAsc
+        ? a[sortAttribute] > b[sortAttribute]
+        : a[sortAttribute] < b[sortAttribute];
 
     return {
         init: init,
@@ -19,26 +24,30 @@ export const home = (function home() {
     }
 
     function updateView() {
-        const sorter = (a, b) => sortAsc
-            ? a[sortAttribute] > b[sortAttribute]
-            : a[sortAttribute] < b[sortAttribute];
-
         noteService.getNotes().then(
-            data => renderView(data.sort(sorter)),
+            data => {
+                localData = data;
+                renderView()
+            },
             error => alert(error)
         );
     }
 
-    function renderView(data) {
+    function renderView(data = localData) {
+        registerHandlebarsHelper();
         var source = $('#home-template').html();
         var template = Handlebars.compile(source);
-        registerHandlebarsHelper();
+        const sortedData = data.sort(sorter);
+        const filteredData = showFinished
+            ? sortedData
+            : sortedData.filter(d => d.done === false);
         $('#home-content').html(template({
-            notes: data,
+            notes: filteredData,
             sort: {
                 asc: sortAsc,
                 attribute: sortAttribute
-            }
+            },
+            showFinished: showFinished
         }));
         registerRadioEvents();
         registerCheckboxEvents();
@@ -49,7 +58,7 @@ export const home = (function home() {
     function onSortClick(attribute) {
         sortAttribute = attribute;
         sortAsc = !sortAsc;
-        updateView();
+        renderView();
     }
 
     function registerTableEvents() {
@@ -102,14 +111,17 @@ export const home = (function home() {
         $('#style-switcher').on('click', function () {
             toggleStyle();
         });
+        $('#home-show-finished').change(() => {
+            showFinished = !showFinished;
+            renderView();
+        });
     }
-
 
     function registerRadioEvents() {
         $('[id^="home-prio"]:radio').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
                 priority: parseInt(event.target.value)
-            });
+            }).done(updateView());
         });
     }
 
@@ -117,7 +129,7 @@ export const home = (function home() {
         $('[id^="home-entry"]:checkbox').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
                 done: $(this).context.checked
-            });
+            }).done(updateView());
         });
     }
 
