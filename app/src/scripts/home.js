@@ -121,7 +121,7 @@ export const home = (function home() {
         $('[id^="home-prio"]:radio').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
                 priority: parseInt(event.target.value)
-            }).done(updateView());
+            }).then(updateView());
         });
     }
 
@@ -129,7 +129,7 @@ export const home = (function home() {
         $('[id^="home-entry"]:checkbox').change(function (event) {
             noteService.updateNote(parseInt(event.target.name), {
                 done: $(this).context.checked
-            }).done(updateView());
+            }).then(updateView());
         });
     }
 

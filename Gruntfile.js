@@ -37,6 +37,13 @@ module.exports = function (grunt) {
                         src: '**/*',
                         dest: './dist/fonts',
                         filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: './node_modules/open-sans-fontface/fonts',
+                        src: '**/*',
+                        dest: './dist/app/fonts',
+                        filter: 'isFile'
                     }
                 ]
             },
