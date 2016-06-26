@@ -18,7 +18,7 @@ export const home = (function home() {
         updateView();
     }
 
-    function updateView(sorter = data => data) {
+    function updateView(sorter = createSorter(sortAttribute)) {
         noteService.getNotes().then(success, error);
 
         function success(data) {
@@ -47,40 +47,31 @@ export const home = (function home() {
         registerTableEvents();
     }
 
+    function onSortClick(attribute) {
+        sortAttribute = attribute;
+        sortAsc = !sortAsc;
+        updateView(createSorter(attribute));
+    }
+
     function registerTableEvents() {
         $('#home-header-date').on('click', function () {
-            const attribute = 'createdAt';
-            updateView(createSorter(attribute));
-            sortAttribute = attribute;
-            sortAsc = !sortAsc;
+            onSortClick('createdAt');
         });
 
         $('#home-header-title').on('click', function () {
-            const attribute = 'title';
-            updateView(createSorter(attribute));
-            sortAttribute = attribute;
-            sortAsc = !sortAsc;
+            onSortClick('title');
         });
 
         $('#home-header-content').on('click', function () {
-            const attribute = 'text';
-            updateView(createSorter(attribute));
-            sortAttribute = attribute;
-            sortAsc = !sortAsc;
+            onSortClick('text');
         });
 
         $('#home-header-prio').on('click', function () {
-            const attribute = 'priority';
-            updateView(createSorter(attribute));
-            sortAttribute = attribute;
-            sortAsc = !sortAsc;
+            onSortClick('priority');
         });
 
         $('#home-header-done').on('click', function () {
-            const attribute = 'done';
-            sortAttribute = attribute;
-            sortAsc = !sortAsc;
-            updateView(createSorter(attribute));
+            onSortClick('done');
         });
     }
 
