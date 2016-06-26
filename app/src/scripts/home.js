@@ -54,7 +54,7 @@ export const home = (function home() {
 
     function registerTableEvents() {
         $('#home-header-date').on('click', function () {
-            onSortClick('createdAt');
+            onSortClick('dueDate');
         });
 
         $('#home-header-title').on('click', function () {
@@ -75,8 +75,8 @@ export const home = (function home() {
     }
 
     function registerHandlebarsHelper() {
-        Handlebars.registerHelper('date', function (createdAt) {
-            return new Date(createdAt).toLocaleDateString();
+        Handlebars.registerHelper('date', function (date) {
+            return new Date(date).toLocaleDateString();
         });
 
         Handlebars.registerHelper('ifCond', function (v1, v2, options) {
