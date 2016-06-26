@@ -18,16 +18,15 @@ export const home = (function home() {
         updateView();
     }
 
-    function updateView(sorter = createSorter(sortAttribute)) {
-        noteService.getNotes().then(success, error);
+    function updateView() {
+        const sorter = (a, b) => sortAsc
+            ? a[sortAttribute] > b[sortAttribute]
+            : a[sortAttribute] < b[sortAttribute];
 
-        function success(data) {
-            renderView(data.sort(sorter));
-        }
-
-        function error(data) {
-            alert(data);
-        }
+        noteService.getNotes().then(
+            data => renderView(data.sort(sorter)),
+            error => alert(error)
+        );
     }
 
     function renderView(data) {
@@ -50,7 +49,7 @@ export const home = (function home() {
     function onSortClick(attribute) {
         sortAttribute = attribute;
         sortAsc = !sortAsc;
-        updateView(createSorter(attribute));
+        updateView();
     }
 
     function registerTableEvents() {
@@ -73,12 +72,6 @@ export const home = (function home() {
         $('#home-header-done').on('click', function () {
             onSortClick('done');
         });
-    }
-
-    function createSorter(attribute) {
-        return (a, b) => sortAsc
-            ? a[attribute] > b[attribute]
-            : a[attribute] < b[attribute]
     }
 
     function registerHandlebarsHelper() {
