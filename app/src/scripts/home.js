@@ -123,17 +123,13 @@ export const home = (function home() {
 
     function registerEditEvents() {
         $('[id^="home-edit"]').on('click', function () {
-            noteService.getNote(parseInt($(this).attr('value')))
-                .then(success, error);
-
-            function success(data) {
-                main.renderDetailsView(data);
-                main.openDetails();
-            }
-
-            function error(data) {
-                alert(data)
-            }
+            noteService.getNote(parseInt($(this).attr('value'))).then(
+                data => {
+                    main.renderDetailsView(data);
+                    main.openDetails();
+                },
+                error => alert(error)
+            );
         });
     }
 
