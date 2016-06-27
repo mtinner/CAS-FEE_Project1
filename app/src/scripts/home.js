@@ -87,20 +87,6 @@ export const home = (function home() {
         Handlebars.registerHelper('date', function (date) {
             return new Date(date).toLocaleDateString();
         });
-
-        Handlebars.registerHelper('ifCond', function (v1, v2, options) {
-            if (v1.toString() === v2.toString()) {
-                return options.fn(this);
-            }
-            return options.inverse(this);
-        });
-
-        Handlebars.registerHelper('ifSort', function (s1, s2, options) {
-            if (s1 === s2) {
-                return options.fn(this);
-            }
-            return options.inverse(this);
-        });
     }
 
     function registerButtonEvents() {
